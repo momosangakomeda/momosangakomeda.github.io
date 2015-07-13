@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-    
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,8 +7,91 @@
         <script type="text/javascript" src="bootstrap.min.js"></script>
         <link href="font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="bootstrap.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript">
+          $(function(){
+            // 取得したい年月設定（とりあえずPC時間の今日の年月）
+            var y = new Date().getFullYear();
+            var m = new Date().getMonth()+1;
+            // 初期設定 
+            var feb_date = (y%4 == 0 && y%100 != 0)?29:28;
+            if(y%400 == 0){feb_date = 29};
+                var month_count = {1:31,2:feb_date,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31}
+                var day_en = {d0:"sun",d1:"mon",d2:"the",d3:"wed",d4:"thu",d5:"fri",d6:"sat"};
+                var m_display = (m<10)?"0"+String(m):m; 
+                var last_day = new Date(y,m-1,month_count[m]).getDay();
+                var first_day = new Date(y,m-1,1).getDay();
+                var w = 1;
+                var d = first_day;
+                // マークアップ生成
+                var txt = "";
+                txt += '<p>' + y + '年' + m_display + '月</p>';
+                txt += '<table summary="' + y + '年' + m_display + '月のカレンダー" class="calendar month' + m + '">';
+                txt += '<tr>';
+                txt += '<th>sun</th>';
+                txt += '<th>mon</th>';
+                txt += '<th>thes</th>';
+                txt += '<th>wed</th>';
+                txt += '<th>thur</th>';
+                txt += '<th>fri</th>';
+                txt += '<th>sut</th>';
+                txt += '</tr>';
+                txt += '<tr class="week1">';
+                for(var j=0;j<first_day;j++){
+                    txt += '<td>&nbsp;</td>';
+                }
+                for(var i=1;i<=month_count[m];i++){
+                    if(d != 0 && (first_day + i)%7 == 1){
+                        w++;
+                        d = 0;
+                        txt += '</tr>'; 
+                        txt += '<tr class="week' + w + '">';
+                    }
+                    var i_display = (i<10)?"0"+String(i):i;
+                    day_count = (i%7 == 0)? Math.floor(i/7) : Math.floor(i/7) + 1 ;
+                    txt += '<td id="d' + y + m_display + i_display + '" class="' + day_en['d'+d] + day_count + ' date' + i + '">' + i + '</td>';
+                    d++;
+                }
+                for(var j=0;j<(6-last_day);j++){
+                    txt += '<td>&nbsp;</td>\n';
+                }
+                txt += '</tr>';
+                txt += '</table>';
+                // 書き出し
+                // document.write(txt);
+                $("#tag").html(txt);
+                $("#pre").click(function(){
+                    alert("pre!");
+                });
+                $("#next").click(function(){
+                    alert("next!");
+                });
+          });
+        </script>
+        <style type="text/css">
+        .month1 .date1,/* 元日 */
+        .month1 .mon2,/* 成人の日 */
+        .month2 .date11,/* 建国記念の日 */
+        .month4 .date4,/* iwasborn */
+        .month4 .date29,/* 昭和の日 */
+        .month5 .date3,/* 憲法記念日 */
+        .month5 .date4,/* みどりの日 */
+        .month5 .date5,/* こども日 */
+        .month7 .mon3,/* 海の日 */
+        .month9 .mon3,/* 敬老の日 */
+        .month10 .mon2,/* 体育の日 */
+        .month11 .date3,/* 文化の日 */
+        .month11 .date23,/* 勤労感謝の日 */
+        .month12 .date23,/* 天皇誕生日 */
+        #d20110321,/* 春分の日（年によって異なる 20日 - 21日） */
+        #d20110923,/* 秋分の日（年によって異なる 20日 - 24日） */
+        .sun1,
+        .sun2,
+        .sun3,
+        .sun4,
+        .sun5{background:#ccf;color:#fff;}
+        </style>
     </head>
-    
+
     <body>
         <div class="cover">
             <div class="navbar">
@@ -33,15 +115,6 @@
                     </div>
                 </div>
             </div>
-            <div class="cover-image" style="background-image : url('stich.jpeg')"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <br>
-                        <br>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="section">
             <div class="container">
@@ -49,77 +122,9 @@
                     <div class="col-md-12">
                         <h1 class="text-primary">ＴＥＳＴ</h1>
                         <p>ここに入力スペースいれる？</p>
-                        <table border="0" width="400">
-                            <tbody>
-                                <tr>
-                                    <td align="center">
-                                        <b style="color:#333333;">▼ 2015年７月 ▼</b>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <table border="0" width="400" cellpadding="2" cellspacing="1" bgcolor="#0C0300">
-                                            <tbody>
-                                                <tr align="center" bgcolor="#ededed">
-                                                    <td>日</td>
-                                                    <td>月</td>
-                                                    <td>火</td>
-                                                    <td>水</td>
-                                                    <td>木</td>
-                                                    <td>金</td>
-                                                    <td>土</td>
-                                                </tr>
-                                                <tr align="center" bgcolor="#FFFFFF">
-                                                    <td></td>
-                                                    <td>1</td>
-                                                    <td>2</td>
-                                                    <td>3</td>
-                                                    <td>4</td>
-                                                    <td>5</td>
-                                                    <td>6</td>
-                                                </tr>
-                                                <tr align="center" bgcolor="#FFFFFF">
-                                                    <td bgcolor="#0018F9">7</td>
-                                                    <td>8</td>
-                                                    <td>9</td>
-                                                    <td>10</td>
-                                                    <td>11</td>
-                                                    <td>12</td>
-                                                    <td>13</td>
-                                                </tr>
-                                                <tr align="center" bgcolor="#FFFFFF">
-                                                    <td bgcolor="#0018F9">14</td>
-                                                    <td>15</td>
-                                                    <td>16</td>
-                                                    <td>17</td>
-                                                    <td>18</td>
-                                                    <td>19</td>
-                                                    <td>20</td>
-                                                </tr>
-                                                <tr align="center" bgcolor="#FFFFFF">
-                                                    <td bgcolor="#0018F9">21</td>
-                                                    <td>22</td>
-                                                    <td>23</td>
-                                                    <td>24</td>
-                                                    <td>25</td>
-                                                    <td>26</td>
-                                                    <td>27</td>
-                                                </tr>
-                                                <tr align="center" bgcolor="#FFFFFF">
-                                                    <td bgcolor="#0018F9">28</td>
-                                                    <td>29</td>
-                                                    <td>30</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <span id = "tag"></span>
+                        <button id="pre" class="btn btn-xs primary">PREVIOUS </button>
+                        <button id="next" class="btn btn-xs primary">NEXT</button>
                     </div>
                 </div>
             </div>
@@ -139,36 +144,5 @@
                 </div>
             </div>
         </div>
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="text-center text-primary">Team</h1>
-                        <p class="text-center">We are a group of skilled individuals.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png"
-                        class="center-block img-circle img-responsive">
-                        <h3 class="text-center">John Doe</h3>
-                        <p class="text-center">Developer</p>
-                    </div>
-                    <div class="col-md-4">
-                        <img src="http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png"
-                        class="center-block img-circle img-responsive">
-                        <h3 class="text-center">John Doe</h3>
-                        <p class="text-center">Developer</p>
-                    </div>
-                    <div class="col-md-4">
-                        <img src="http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png"
-                        class="center-block img-circle img-responsive">
-                        <h3 class="text-center">John Doe</h3>
-                        <p class="text-center">Developer</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </body>
-
 </html>
