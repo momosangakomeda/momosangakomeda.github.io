@@ -25,7 +25,7 @@
                 // マークアップ生成
                 var txt = "";
                 txt += '<p>' + y + '年' + m_display + '月</p>';
-                txt += '<table summary="' + y + '年' + m_display + '月のカレンダー" class="calendar month' + m + '">';
+                txt += '<table summary="' + y + '年' + m_display + '月のカレンダー" class="table table-bordered calendar month' + m + '">';
                 txt += '<tr>';
                 txt += '<th>sun</th>';
                 txt += '<th>mon</th>';
@@ -124,33 +124,34 @@
                         <h3>入力フォームaaaa</h3>
                         <div class="row">
                             <div class="col-md-4">
-                                <select>
+                                <select style="width:100%;">
                                     <option>2014</option>
                                     <option>2015</option>
                                     <option>2016</option>
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <select>
+                                <select style="width:100%;">
                                     <option>6</option>
                                     <option>7</option>
                                     <option>8</option>
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <select>
+                                <select style="width:100%;">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                 </select>
                             </div>
+                            <div><button class="btn btn-primary">RESEARCH</button></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <p>とりあえず7月のカレンダー出力</p>
                         <span id = "tag"></span>
-                        <button id="pre" class="btn btn-xs primary">PREVIOUS </button>
-                        <button id="next" class="btn btn-xs primary">NEXT</button>
+                        <button id="pre" class="btn btn-xs btn-primary">PREVIOUS </button>
+                        <button id="next" class="btn btn-xs btn-primary">NEXT</button>
                     </div>
                 </div>
             </div>
