@@ -4,7 +4,7 @@ function CalConv(M) {
  LASTYEAR = 2031;
 
  LunarCal = [
-  new tagLunarCal( 23, 3, 2, 17, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0 ), /* 1936 */ 
+  new tagLunarCal(23, 3, 2, 17, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0 ), /* 1936 */ 
   new tagLunarCal( 41, 0, 4, 23, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1 ), 
   new tagLunarCal( 30, 7, 5, 28, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1 ), 
   new tagLunarCal( 49, 0, 6, 33, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1 ), 
@@ -285,7 +285,8 @@ alert("農暦："+ LunarYear + "年" + LunarMonth + "月 " + LunarDate + "日 " 
  }
 
  /* 閏年, 返回 0 平年, 1 閏年 */
-function GetLeap( year ) {
+function GetLeap( year )
+ {
    if ( year % 400 == 0 )
      return 1;
    else if ( year % 100 == 0 )
@@ -294,31 +295,47 @@ function GetLeap( year ) {
      return 1;
    else
      return 0;
-}
+ }
 
 function tagLunarCal( d, i, w, k, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13) {
-  this.BaseDays = d;         /* 1 月 1 日到正月初一的累計日 */
-  this.Intercalation = i;    /* 閏月月彬. 0==此年沒有閏月 */
-  this.BaseWeekday = w;      /* 此年 1 月 1 日?星期減 1 */
-  this.BaseKanChih = k;      /* 此年 1 月 1 日之干支序号減 1 */
-  this.MonthDays = [ m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13 ]; /* 此農暦年毎月之大小, 0==小月(29日), 1==大月(30日) */
+ this.BaseDays = d;         /* 1 月 1 日到正月初一的累計日 */
+ this.Intercalation = i;    /* 閏月月彬. 0==此年沒有閏月 */
+ this.BaseWeekday = w;      /* 此年 1 月 1 日?星期減 1 */
+ this.BaseKanChih = k;      /* 此年 1 月 1 日之干支序号減 1 */
+ this.MonthDays = [ m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13 ]; /* 此農暦年毎月之大小, 0==小月(29日), 1==大月(30日) */
 }
 
-function IsInteger(string ,sign) {  
+//-->
+
+
+<!--
+function OpenWin( url ) { 
+ return window.open( url, 'coop', 'width=320,height=350,toolbar=0,location=0,directories=0,status=0,menuBar=0,scrollBars=0,resizable=1' ); 
+} 
+
+
+function IsInteger(string ,sign) 
+{  
   var integer; 
-  if ((sign!=null) && (sign!='-') && (sign!='+')) { 
-    return false; 
+  if ((sign!=null) && (sign!='-') && (sign!='+')) 
+  { 
+   alert('IsInter(string,sign)的参数出錯：nsign?null或"-"或"+"'); 
+   return false; 
   } 
   integer = parseInt(string); 
-  if (isNaN(integer)) { 
-    return false; 
-  } else if (integer.toString().length==string.length) {
-    if ((sign==null) || (sign=='-' && integer<0) || (sign=='+' && integer>0)) { 
-      return true; 
-    } else { 
-      return false;
-    }  
-  } else { 
-    return false;
+  if (isNaN(integer)) 
+  { 
+   return false; 
   } 
+  else if (integer.toString().length==string.length) 
+  {  
+   if ((sign==null) || (sign=='-' && integer<0) || (sign=='+' && integer>0)) 
+   { 
+     return true; 
+   } 
+   else 
+     return false;  
+  } 
+  else 
+   return false; 
 } 
