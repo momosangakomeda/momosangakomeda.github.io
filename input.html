@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+    <link href="font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="bootstrap.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="bootstrap-datepicker.ja.js"></script>
+    <script type="text/javascript">
+    $(function(){
+      $("#research").click(function(){
+        window.location.href = 'file:///C:/Users/00122306/momosangakomeda.github.io/calendar.html#';
+      });
+      $('#day').datepicker({
+        format: 'yyyy/mm/dd',
+        language: 'ja',
+        autoclose: true,
+        clearBtn: false,
+        keyboardNavigation : true
+      });
+    });
+    </script>
+    <link rel="stylesheet" type="text/css" href="datepicker.css">
+    <style type="text/css">
+    </style>
+    </head>
+    <body>
+        <div class="cover">
+            <div class="navbar">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"><span>Brand</span></a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#">ログイン画面</a>
+                                <a href="#">入力画面</a>
+                                <a href="#">カレンダー</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="form-group">
+                    <p class="control-label"><b>language</b></p>
+                    <div class="radio-inline">
+                        <input type="radio" value="1" name="gender" id="man">
+                        <label for="jap">日本ver</label>
+                    </div>
+                    <div class="radio-inline">
+                        <input type="radio" value="2" name="gender" id="woman">
+                        <label for="china">中国ver</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <input id="day" maxlength="10" class="form-control" label="" placeholder="yyyyy/mm/dd">
+                    </div>
+                    <div class="col-md-4">
+                         <button id = "research" class="btn btn-primary">リサーチ</button>
+                    </div>
+                </div>
+                <img src="ultraman.jpeg">
+            </div>
+        </div>
+    </body>
+</html>
