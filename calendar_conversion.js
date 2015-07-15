@@ -278,7 +278,8 @@ function tagLunarCal( d, i, w, k, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, 
   this.Intercalation = i;    /* 閏月月彬. 0==此年沒有閏月 */
   this.BaseWeekday = w;      /* 此年 1 月 1 日?星期減 1 */
   this.BaseKanChih = k;      /* 此年 1 月 1 日之干支序号減 1 */
-  this.MonthDays = [ m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13 ]; /* 此農暦年毎月之大小, 0==小月(29日), 1==大月(30日) */
+  this.MonthDays = [ m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13 ]; 
+                             /* 此農暦年毎月之大小, 0==小月(29日), 1==大月(30日) */
 }
 
 function IsInteger(string ,sign) {  
