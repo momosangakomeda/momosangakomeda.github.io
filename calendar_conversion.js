@@ -1,3 +1,4 @@
+
 function calConv(M) {
   FIRSTYEAR = 1936;
   LASTYEAR = 2031;
@@ -294,3 +295,5 @@ function IsInteger(string ,sign) {
     return false;
   } 
 } 
+
+exports.conv = calConv;
