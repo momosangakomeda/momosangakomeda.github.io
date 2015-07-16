@@ -250,16 +250,10 @@ function calConv(M) {
     kan = kc % 10; 
     chih = kc % 12; 
            
-    alert("西暦："+ SolarYear + "年" + SolarMonth + "月" + SolarDate + "日 " );        
-
- 
-            //form_jisuan.nyear.value = "";
-            //form_jisuan.nmonth.value = "";
-            //form_jisuan.nday.value = "";            
-            return 0;
- }//else結束
- 
- }
+    alert("西暦："+ SolarYear + "年" + SolarMonth + "月" + SolarDate + "日 " );
+    return 0;
+  }
+}
 
  /* 閏年, 返回 0 平年, 1 閏年 */
 function GetLeap( year ) {
