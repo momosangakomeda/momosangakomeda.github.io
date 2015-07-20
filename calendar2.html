@@ -58,10 +58,12 @@
           }
           if(qArray[day-1].uruu) {
             html1 = html1 + "<font size='2' color='#000000'>閏"+qArray[day-1].month+"."+qArray[day-1].day+
-                           "<font size='1' color='#000000'>"+getRokuyo(qArray[day-1].month,qArray[day-1].day)+"<br><font size='2' color='#ffffff'>";
+                           "<font size='1' color='#000000'>"+getRokuyo(qArray[day-1].month,qArray[day-1].day)+
+						   "<br><font size='2' color='#ffffff'>";
           } else {
             html1 = html1 + "<font size='2' color='#000000'>"+qArray[day-1].month+"月"+qArray[day-1].day+
-                           "<font size='2' color='#666666'>日<br></font><font size='1' color='#666666'>"+getRokuyo(qArray[day-1].month,qArray[day-1].day)+"<font color=ffffff  size=1>";
+                           "<font size='2' color='#666666'>日<br></font><font size='1' color='#666666'>"+
+			               getRokuyo(qArray[day-1].month,qArray[day-1].day)+"<font color=ffffff  size=1>";
           }
           html1 = html1 + eto + "</font></div></td>";
           col++;
