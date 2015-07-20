@@ -36,14 +36,14 @@
 
         startDay=date.getDay();
         html1 = "";
-        html1 = html1 + "<table border='1' bordercolor='#666666' cellspacing='0' cellpadding='2'bgcolor='#ffffff'>";
-        html1 = html1 + "<tr bgcolor='#000000'><th colspan='7'><div align=center><font color='#FFFFFF'" + year + "年 " + month + "月</th></tr>";
-        html1 = html1 + "<tr bgcolor='#bbbbbb'><th><div align='center'><font color='#FF0000'>" + days[0] + "</font></th>";
+        html1 = html1 + '<p>' + year + '年' + month + '月</p>';
+        html1 = html1 + "<table class='table table-bordered calendar month" + month + "'>";
+        html1 = html1 + "<tr><th>" + days[0] + "</th>";
         for(i=1; i < 7; i++) {
-          html1 = html1 + "<th><div align='center'><font color='#000000'>" + days[i] + "</font></th>";
+          html1 = html1 + "<th>" + days[i] + "</th>";
         }
         html1 = html1 + "</tr>";
-        html1 = html1 + "<tr>";
+        html1 = html1 + "<tr class='week1'>";
         var col=0;
         for(i=0;i<startDay;i++){
           html1 = html1 + "<td>&nbsp;</td>";
@@ -79,73 +79,36 @@
         return html1;
       }
 
-
-      function htmlCalendar0(y, m) {
-        // 初期設定 
-        var feb_date = (y%4 == 0 && y%100 != 0)?29:28;
-        if(y%400 == 0){
-          feb_date = 29;
-        };
-    
-        var month_count = {1:31,2:feb_date,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31}
-        var day_en = {d0:"sun",d1:"mon",d2:"the",d3:"wed",d4:"thu",d5:"fri",d6:"sat"};
-        var m_display = (m<10)?"0"+String(m):m; 
-        var last_day = new Date(y,m-1,month_count[m]).getDay();
-        var first_day = new Date(y,m-1,1).getDay();
-        var w = 1;
-        var d = first_day;
-        // マークアップ生成
-        var txt = "";
-        txt += '<p>' + y + '年' + m_display + '月</p>';
-        txt += '<table summary="' + y + '年' + m_display + '月のカレンダー" class="table table-bordered calendar month' + m + '">';
-        txt += '<tr>';
-        txt += '<th>日</th>';
-        txt += '<th>月</th>';
-        txt += '<th>火</th>';
-        txt += '<th>水</th>';
-        txt += '<th>木</th>';
-        txt += '<th>金</th>';
-        txt += '<th>土</th>';
-        txt += '</tr>';
-        txt += '<tr class="week1">';
-        for(var j=0;j<first_day;j++){
-          txt += '<td>&nbsp;</td>';
-        }
-        for(var i=1;i<=month_count[m];i++){
-          if(d != 0 && (first_day + i)%7 == 1){
-            w++;
-            d = 0;
-            txt += '</tr>'; 
-            txt += '<tr class="week' + w + '">';
-          }
-          var i_display = (i<10)?"0"+String(i):i;
-          day_count = (i%7 == 0)? Math.floor(i/7) : Math.floor(i/7) + 1 ;
-          txt += '<td id="d' + y + m_display + i_display + '" class="' + day_en['d'+d] + day_count + ' date' + i + '">' + i + '</td>';
-          d++;
-        }
-        for(var j=0;j<(6-last_day);j++){
-          txt += '<td>&nbsp;</td>\n';
-        }
-        txt += '</tr>';
-        txt += '</table>';
-
-        return txt;
-      }
-
       $(function(){
+        var date=new Date();
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        var mp,yp,mn,yn;
+        if(m==1) {
+          mp=12;
+          yp=y-1;
+          mn=2
+          yn=y;
+        } else if(m==12) {
+          mp=m-1;
+          yp=y;
+          mn=1;
+          yn=y+1;
+        } else {
+          mp=m-1;
+          yp=y;
+          mn=m+1
+          yn=y;
+        }	
+
         $("#pre").click(function(){
-          alert("pre!");
+          $("#tag").html(htmlCalendar(yp, mp));
         });
         $("#next").click(function(){
-          alert("next!");
+          $("#tag").html(htmlCalendar(yn, mn));
         });
-        
-        // 取得したい年月設定（とりあえずPC時間の今日の年月）
-        var y = new Date().getFullYear();
-        var m = new Date().getMonth()+1;
 
-        var html1 = htmlCalendar(y, m);
-        $("#tag").html(html1);
+        $("#tag").html(htmlCalendar(y, m));
 
       });
     </script>
@@ -175,31 +138,8 @@
     </head>
     <body>
         <div class="cover">
-            <div class="navbar">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#"><span>Brand</span></a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href=‘login.html’>ログイン画面</a>
-                                <a href=‘input.html’>入力画面</a>
-                                <a href=‘#’>カレンダー</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
             <div class="container">
                 <div class="row">
-                    <p>とりあえず7月のカレンダー出力</p>
                     <span id = "tag"></span>
                     <button id="pre" class="btn btn-xs btn-primary">PREVIOUS </button>
                     <button id="next" class="btn btn-xs btn-primary">NEXT</button>
