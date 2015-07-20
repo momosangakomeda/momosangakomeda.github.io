@@ -1,0 +1,50 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>旧暦カレンダー</title>
+  <script type="text/javascript" src="kyureki.js"></script>
+</head>
+<body>
+  <div align=center>
+    <table>
+      <tr><td>旧暦カレンダー</td></tr>
+    </table>
+  </div>
+
+  <div align=center>
+  <script type="text/javascript">
+	str = location.search;
+	if(str == "") {
+		var date=new Date();
+	} else {	
+		separator = str.search(/,/);
+		year = parseInt(str.substring(1,separator));
+		month = parseInt(str.substring(separator+1,99));
+		var date=new Date(year,month-1);
+	}
+	y = date.getFullYear();
+	m = date.getMonth()+1;
+	if(m==1) {
+		mp=12;
+		yp=y-1;
+		mn=2
+		yn=y;
+	} else if(m==12) {
+		mp=m-1;
+		yp=y;
+		mn=1;
+		yn=y+1;
+	} else {
+		mp=m-1;
+		yp=y;
+		mn=m+1
+		yn=y;
+	}	
+	showCalender(y,m);
+	document.write('<p align="center"><a href="kyureki.html?',yp,',',mp,'""STYLE="text-decoration: none"><b>前月のカレンダー</a>　/　');
+	document.write('<a href="./kyureki.html" target="_top""STYLE="text-decoration: none"><b>当月に戻る</a>　/　');
+	document.write('<a href="kyureki.html?',yn,',',mn,'""STYLE="text-decoration: none"><b>次月のカレンダー</a></b>');
+  </script>
+  </div>
+</body>
+</html>
