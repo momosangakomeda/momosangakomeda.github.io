@@ -51,7 +51,7 @@
         }
         for(day = 1; day <= thisMonthdays; day++) {
           eto = eto_day( year,month,day);
-          if(col==0){
+          if(col == 0){
             html1 = html1 + "<td> <div align='center'><b><font size='5' color='#FF0000' face='Arial Black'>" + day + "</font></b><br>";
           } else {
             html1 = html1 + "<td> <div align='center'><b><font size='5' color='#666666' face='Arial Black'>" + day + "</font></b><br>";
@@ -67,7 +67,7 @@
           }
           html1 = html1 + eto + "</font></div></td>";
           col++;
-          if(col==7){
+          if(col == 7){
             html1 = html1 + "</tr><tr>";
             col=0;
           }
