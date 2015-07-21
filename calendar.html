@@ -12,13 +12,16 @@
         // カレンダー生成
         generate_cal(0);
         $("#pre").click(function(){
-          alert("pre!");
-          generate_cal(-1);
-          
+        
+          count = parseInt($("#count").val());
+          count = count-1;
+          generate_cal(count);
         });
         $("#next").click(function(){
-          alert("next!");
-          generate_cal(1);
+          var count = parseInt($("#count").val());
+          alert(count);
+          count = count+1;
+          generate_cal(count);
         });
         $("#curr").click(function(){
           generate_cal(0);
@@ -43,6 +46,7 @@
           // マークアップ生成
           var txt = "";
           txt += '<p>' + y + '年' + m_display + '月</p>';
+          txt += '<input type="hidden" id ="count" name="'+ count +'" value= "'+count+'" >';
           txt += '<table summary="' + y + '年' + m_display + '月のカレンダー" class="table table-bordered calendar month' + m + '">';
           txt += '<tr>';
           txt += '<th>sun</th>';
@@ -133,7 +137,7 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <p>とりあえず6:7:8月のカレンダー出力</p>
+                    <p>２０１５年はﾀﾞｲｼﾞｮｳﾌﾞ</p>
                     <span id = "tag"></span>
                     <button id="pre"  class="btn btn-primary">前月</button>
                     <button id="curr" class="btn btn-primary">当月</button>
