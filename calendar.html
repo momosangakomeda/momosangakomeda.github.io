@@ -9,76 +9,77 @@
     <link href="bootstrap.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
       $(function(){
+        // カレンダー生成
+        generate_cal(0);
         $("#pre").click(function(){
           alert("pre!");
-          generate_cal();
+          generate_cal(-1);
+          
         });
         $("#next").click(function(){
           alert("next!");
+          generate_cal(1);
         });
-        
-        
-        
-        // 取得したい年月設定（とりあえずPC時間の今日の年月）
-        var y = new Date().getFullYear();
-        var m = new Date().getMonth()+1;
-        // 初期設定 
-        var feb_date = (y%4 == 0 && y%100 != 0)?29:28;
-        if(y%400 == 0){
-          feb_date = 29;
-        };
-    
-        var month_count = {1:31,2:feb_date,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31}
-        var day_en = {d0:"sun",d1:"mon",d2:"the",d3:"wed",d4:"thu",d5:"fri",d6:"sat"};
-        var m_display = (m<10)?"0"+String(m):m; 
-        var last_day = new Date(y,m-1,month_count[m]).getDay();
-        var first_day = new Date(y,m-1,1).getDay();
-        var w = 1;
-        var d = first_day;
-        // マークアップ生成
-        var txt = "";
-        txt += '<p>' + y + '年' + m_display + '月</p>';
-        txt += '<table summary="' + y + '年' + m_display + '月のカレンダー" class="table table-bordered calendar month' + m + '">';
-        txt += '<tr>';
-        txt += '<th>sun</th>';
-        txt += '<th>mon</th>';
-        txt += '<th>thes</th>';
-        txt += '<th>wed</th>';
-        txt += '<th>thur</th>';
-        txt += '<th>fri</th>';
-        txt += '<th>sut</th>';
-        txt += '</tr>';
-        txt += '<tr class="week1">';
-        for(var j=0;j<first_day;j++){
-          txt += '<td>&nbsp;</td>';
-        }
-        for(var i=1;i<=month_count[m];i++){
-          if(d != 0 && (first_day + i)%7 == 1){
-            w++;
-            d = 0;
-            txt += '</tr>'; 
-            txt += '<tr class="week' + w + '">';
+        $("#curr").click(function(){
+          generate_cal(0);
+        });
+        function generate_cal(count){
+          // 取得したい年月設定（とりあえずPC時間の今日の年月）
+          var y = new Date().getFullYear();
+          var m = new Date().getMonth()+1;
+          m = m + count;
+          // 初期設定 
+          var feb_date = (y%4 == 0 && y%100 != 0)?29:28;
+          if(y%400 == 0){
+            feb_date = 29;
+          };
+          var month_count = {1:31,2:feb_date,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31}
+          var day_en = {d0:"sun",d1:"mon",d2:"the",d3:"wed",d4:"thu",d5:"fri",d6:"sat"};
+          var m_display = (m<10)?"0"+String(m):m; 
+          var last_day = new Date(y,m-1,month_count[m]).getDay();
+          var first_day = new Date(y,m-1,1).getDay();
+          var w = 1;
+          var d = first_day;
+          // マークアップ生成
+          var txt = "";
+          txt += '<p>' + y + '年' + m_display + '月</p>';
+          txt += '<table summary="' + y + '年' + m_display + '月のカレンダー" class="table table-bordered calendar month' + m + '">';
+          txt += '<tr>';
+          txt += '<th>sun</th>';
+          txt += '<th>mon</th>';
+          txt += '<th>thes</th>';
+          txt += '<th>wed</th>';
+          txt += '<th>thur</th>';
+          txt += '<th>fri</th>';
+          txt += '<th>sut</th>';
+          txt += '</tr>';
+          txt += '<tr class="week1">';
+          for(var j=0;j<first_day;j++){
+            txt += '<td>&nbsp;</td>';
           }
-          var i_display = (i<10)?"0"+String(i):i;
-          day_count = (i%7 == 0)? Math.floor(i/7) : Math.floor(i/7) + 1 ;
-          txt += '<td id="d' + y + m_display + i_display + '" class="' + day_en['d'+d] + day_count + ' date' + i + '">' + i + '</td>';
-          d++;
-        }
-        for(var j=0;j<(6-last_day);j++){
-          txt += '<td>&nbsp;</td>\n';
-        }
-        txt += '</tr>';
-        txt += '</table>';
- //       txt += '<p>';
- //       txt += '<input type="hidden" name="i" value="12345>';
- //       txt += '</p>';
-        
-        
-        // 書き出し
-        // document.write(txt);
-        $("#tag").html(txt);
-        function generate_cal(){
-          alert("ここでアラート出します");
+          for(var i=1;i<=month_count[m];i++){
+            if(d != 0 && (first_day + i)%7 == 1){
+              w++;
+              d = 0;
+              txt += '</tr>'; 
+              txt += '<tr class="week' + w + '">';
+            }
+            var i_display = (i<10)?"0"+String(i):i;
+            day_count = (i%7 == 0)? Math.floor(i/7) : Math.floor(i/7) + 1 ;
+            txt += '<td id="d' + y + m_display + i_display + '" class="' + day_en['d'+d] + day_count + ' date' + i + '">' + i + '</td>';
+            d++;
+          }
+          for(var j=0;j<(6-last_day);j++){
+            txt += '<td>&nbsp;</td>\n';
+          }
+          txt += '</tr>';
+          txt += '</table>';
+          //txt += '<p>';
+          //txt += '<input type="hidden" name="i" value="12345>';
+          //txt += '</p>';
+          // 書き出し
+          // document.write(txt);
+          $("#tag").html(txt);
         }
       });
 
@@ -132,10 +133,11 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <p>とりあえず7月のカレンダー出力</p>
+                    <p>とりあえず6:7:8月のカレンダー出力</p>
                     <span id = "tag"></span>
-                    <button id="pre" class="btn btn-xs btn-primary">PREVIOUS </button>
-                    <button id="next" class="btn btn-xs btn-primary">NEXT</button>
+                    <button id="pre"  class="btn btn-primary">前月</button>
+                    <button id="curr" class="btn btn-primary">当月</button>
+                    <button id="next" class="btn btn-primary">翌月</button>
                 </div>
            </div>
     </body>
