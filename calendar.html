@@ -11,10 +11,14 @@
       $(function(){
         $("#pre").click(function(){
           alert("pre!");
+          generate_cal();
         });
         $("#next").click(function(){
           alert("next!");
         });
+        
+        
+        
         // 取得したい年月設定（とりあえずPC時間の今日の年月）
         var y = new Date().getFullYear();
         var m = new Date().getMonth()+1;
@@ -65,10 +69,19 @@
         }
         txt += '</tr>';
         txt += '</table>';
+ //       txt += '<p>';
+ //       txt += '<input type="hidden" name="i" value="12345>';
+ //       txt += '</p>';
+        
+        
         // 書き出し
         // document.write(txt);
         $("#tag").html(txt);
+        function generate_cal(){
+          alert("ここでアラート出します");
+        }
       });
+
     </script>
     <style type="text/css">
       .month1 .date1,/* 元日 */
@@ -105,14 +118,13 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"><span>Brand</span></a>
                     </div>
                     <div class="collapse navbar-collapse" id="navbar-ex-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <a href=‘login.html’>ログイン画面</a>
                                 <a href=‘input.html’>入力画面</a>
-                                <a href=‘#’>カレンダー</a>
+                                <a href=‘calender.html’>カレンダー</a>
                             </li>
                         </ul>
                     </div>
