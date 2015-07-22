@@ -52,22 +52,16 @@
         for(day = 1; day <= thisMonthdays; day++) {
           eto = eto_day( year,month,day);
           if(col == 0){
-            html1 = html1 + "<td> <div align='center'><b><font size='5' color='#FF0000' face='Arial Black'>" + 
-                    day + "</font></b><br>";
+            html1 = html1 + "<td><div align='center'><font size='5' color='#FF0000'>" + day + "</font><br>";
           } else {
-            html1 = html1 + "<td> <div align='center'><b><font size='5' color='#666666' face='Arial Black'>" + 
-                    day + "</font></b><br>";
+            html1 = html1 + "<td><div align='center'><font size='5' color='#666666'>" + day + "</font><br>";
           }
           if(qArray[day-1].uruu) {
-            html1 = html1 + "<font size='2' color='#000000'>閏"+qArray[day-1].month+"."+qArray[day-1].day+
-                           "<font size='1' color='#000000'>"+getRokuyo(qArray[day-1].month,qArray[day-1].day)+
-                           "<br><font size='2' color='#ffffff'>";
+            html1 = html1 + "閏 "+qArray[day-1].month+"."+qArray[day-1].day;
           } else {
-            html1 = html1 + "<font size='2' color='#000000'>"+qArray[day-1].month+"/"+qArray[day-1].day+
-                           "<font size='2' color='#666666'><br></font><font size='1' color='#666666'>"+
-                           getRokuyo(qArray[day-1].month,qArray[day-1].day)+"<font color=ffffff  size=1>";
+            html1 = html1 + qArray[day-1].month+"/"+qArray[day-1].day;
           }
-          html1 = html1 + eto + "</font></div></td>";
+          html1 = html1 + "</div></td>";
           col++;
           if(col == 7){
             html1 = html1 + "</tr><tr>";
