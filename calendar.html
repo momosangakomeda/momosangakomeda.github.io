@@ -12,14 +12,12 @@
         // カレンダー生成
         generate_cal(0);
         $("#pre").click(function(){
-        
           count = parseInt($("#count").val());
           count = count-1;
           generate_cal(count);
         });
         $("#next").click(function(){
           var count = parseInt($("#count").val());
-          alert(count);
           count = count+1;
           generate_cal(count);
         });
@@ -111,6 +109,7 @@
       .sun4,
       .sun5{background:#ccf;color:#fff;}
     </style>
+    <link rel="apple-touch-icon" href="https://momosangakomeda.github.io/logp.JPG" />
     </head>
     <body>
         <div class="cover">
@@ -127,9 +126,9 @@
                     <div class="collapse navbar-collapse" id="navbar-ex-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href=‘login.html’>ログイン画面</a>
-                                <a href=‘input.html’>入力画面</a>
-                                <a href=‘calender.html’>カレンダー</a>
+                                <a href="https://momosangakomeda.github.io/login.html">ログイン画面</a>
+                                <a href="https://momosangakomeda.github.io/input.html">入力画面</a>
+                                <a href="https://momosangakomeda.github.io/calendar.html">カレンダー</a>
                             </li>
                         </ul>
                     </div>
