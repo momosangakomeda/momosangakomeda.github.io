@@ -9,6 +9,8 @@
     <link href="bootstrap.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
       $(function(){
+
+
         // カレンダー生成
         generate_cal(0);
         $("#pre").click(function(){
@@ -24,6 +26,10 @@
         $("#curr").click(function(){
           generate_cal(0);
         });
+        
+        // リクエストパラメータをGET
+        alert("Getパラメータ「key」の値は、"+  getParam()  +" です。");
+        
         function generate_cal(count){
           // 取得したい年月設定（とりあえずPC時間の今日の年月）
           var y = new Date().getFullYear();
@@ -82,6 +88,17 @@
           // 書き出し
           // document.write(txt);
           $("#tag").html(txt);
+        }
+        
+        function getParam(){
+          var vars = new Object, params;
+          var temp_params = window.location.search.substring(1).split('&');
+          alert(temp_params);
+          for(var i = 0; i <temp_params.length; i++) {
+            params = temp_params[i].split('=');
+            vars[params[0]] = params[1];
+          }
+          return vars;
         }
       });
 

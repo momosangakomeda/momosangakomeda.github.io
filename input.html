@@ -12,7 +12,19 @@
     <script type="text/javascript">
     $(function(){
       $("#research").click(function(){
-        window.location.href = 'calendar.html';
+        var lang  = $('input[name="day"]:checked').val(); 
+        var day   = $("#day").val();
+        var event = $("#event").val();
+        
+        // ＵＲＬ組立
+        var url = "calendar.html?";
+        url = url + "lang=" + encodeURIComponent(lang) + "&";
+        url = url + "day=" + encodeURIComponent(day) + "&";
+        url = url + "event="+ encodeURIComponent(event);
+        
+        // カレンダーに登録する
+        alert(url);
+        window.location.href = url;
       });
       $('#day').datepicker({
         format: 'yyyy/mm/dd',
@@ -53,14 +65,14 @@
             </div>
             <div class="container">
                 <div class="form-group">
-                    <p class="control-label"><b>language</b></p>
+                    <p class="control-label"><b>イベント登録</b></p>
                     <div class="radio-inline">
-                        <input type="radio" value="1" name="gender" id="man">
-                        <label for="jap">日本ver</label>
+                        <input type="radio" value="1" name="day" checked>
+                        <label for="jap">日本の日</label>
                     </div>
                     <div class="radio-inline">
-                        <input type="radio" value="2" name="gender" id="woman">
-                        <label for="china">中国ver</label>
+                        <input type="radio" value="2" name="day">
+                        <label for="china">中国の日</label>
                     </div>
                 </div>
                 <div class="row">
@@ -71,7 +83,13 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                         <button id = "research" class="btn btn-primary">リサーチ</button>
+                        <input id="event" maxlength="10" class="form-control" label="" placeholder="イベント">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                         <button id = "research" class="btn btn-primary">とうろく</button>
                     </div>
                 </div>
             </div>
