@@ -52,9 +52,9 @@
         for(day = 1; day <= thisMonthdays; day++) {
           eto = eto_day( year,month,day);
           if(col == 0){
-            html1 = html1 + "<td><div align='center'><font size='5' color='#FF0000'>" + day + "</font><br>";
+            html1 = html1 + "<td class='ositatoki' id=day"+day+"><div align='center'><font size='5' color='#FF0000'>" + day + "</font><br>";
           } else {
-            html1 = html1 + "<td><div align='center'><font size='5' color='#666666'>" + day + "</font><br>";
+            html1 = html1 + "<td class='ositatoki'  id=day"+day+"><div align='center'><font size='5' color='#666666'>" + day + "</font><br>";
           }
           if(qArray[day-1].uruu) {
             html1 = html1 + "閏 "+qArray[day-1].month+"."+qArray[day-1].day;
@@ -107,7 +107,19 @@
         });
 
         $("#tag").html(htmlCalendar(y, m));
-
+        $('.ositatoki').on('click' , function(){
+          alert('CLICKED!');
+          
+          $(this).each(function(){
+            var year;
+            var mon;
+            var day = $(this).attr('id');
+            $("#detail").html();
+            
+          });
+          
+          
+        });
       });
     </script>
     <style type="text/css">
@@ -133,14 +145,48 @@
       .sun4,
       .sun5{background:#ccf;color:#fff;}
     </style>
+    <link rel="apple-touch-icon" href="https://momosangakomeda.github.io/logp.JPG" />
     </head>
     <body>
         <div class="cover">
+        
+        　　<div class="navbar">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="https://momosangakomeda.github.io/login.html">ログイン画面</a>
+                                <a href="https://momosangakomeda.github.io/input.html">入力画面</a>
+                                <a href="https://momosangakomeda.github.io/calendar.html">カレンダー</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             <div class="container">
                 <div class="row">
                     <span id = "tag"></span>
-                    <button id="pre" class="btn btn-xs btn-primary">PREVIOUS </button>
-                    <button id="next" class="btn btn-xs btn-primary">NEXT</button>
+                    <span id = "detail"></span>
+                    <button id="pre"  class="btn  btn-primary">前月</button>
+                    <button id="curr" class="btn btn-primary">当月</button>
+                    <button id="next" class="btn btn-primary">翌月</button>
+                    <select name="example">
+                      <option value="2014">2014ねん</option>
+                      <option value="2015">2015ねん</option>
+                      <option value="2016">2016ねん</option>
+                    </select>
+                    <p>イベント</p>
+                    <p>イベント</p>
+                    <p>イベント</p>
+                    <p>イベント</p>
+                    <p>イベント</p>
                 </div>
            </div>
     </body>
