@@ -672,18 +672,33 @@ TIPS
 
 
 
-           NULLIF(RTRIM(W.ChuFlg),'')        AS ChuFlg, 
-           RTRIM(W.CHUBang)                  AS CHUBang, 
-           NULLIF(RTRIM(W.MadoBan),'')       AS MadoBan, 
-           NULLIF(RTRIM(W.KRIKanDAY),'')     AS KRIKanDAY, 
-           NULLIF(RTRIM(W.KRIKanTime),'')    AS KRIKanTime, 
-           CONVERT(INT, W.TDAYKanryoSu)      AS TDAYKanryoSu, 
-       CONVERT(INT, W.KOPUSu)            AS KOPUSu, 
-       NULLIF(RTRIM(W.TonyuKJ),'')       AS TonyuKJ, 
-       NULLIF(RTRIM(W.YOBI),'')          AS YOBI, 
-       NULLIF(RTRIM(W.DataAppDay),'')    AS DataAppDay 
- FROM ${TBL.W1K1} AS W
+lsj
+O
+k
+CHUBang
+'dig
+OOd
+labc abdabc
+lfiiiaaiLFi   ':lss
+‚Ìaaaaab‚¤‚Ì
+aasdsaabc
+NULLIF(RTRIM(W.ChuFlg),'')        AS ChuFlg, 
+sdasd     RTRIM(W.CHUBang)                  AS CHUBang, 
+     dddd1111111111-RTRIddddM(Wab.MadoBan),'')       AS MadoBan, 
+1111111111NUaLsaaLIF(RTRIM(W.KRIKacnDAY),'')     AS KRIKanDAY, 
+   a  NULLIdddF(RabcTRIMdd(W.KcRIKanTime),'')    AS KRIKanTime, 
+T(IaNT, W.KOPUSu)DataAppDay
+CONaVERabc
+a
+T(INT, W.TDAYKanddryoSu)      AS TDAYKanryoSu, 
+INTT(INT, W.KOPUSu)            AS KOPUSu, 
+NULLIF(RTRIM(W.TonyuKJ),'')       AS TonyuKJ, 
+NULLIF(RTRIM(),'')          AS YOBI, 
+ NULLIF
+ NULLIF
+ NULLIF l  abc i(RTRIM(W.DataAppDay),'')    AS DataAppDay 
+ FROM ${TBL.Wdd1K1} AS W    DataAppDay),'')   AS
  CHUBang
- KRIKanTime
+ KRIKanTimedd
  TIPS
 
