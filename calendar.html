@@ -9,8 +9,6 @@
     <link href="bootstrap.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
       $(function(){
-
-
         // カレンダー生成
         generate_cal(0);
         $("#pre").click(function(){
@@ -77,6 +75,7 @@
             txt += '<td id="d' + y + m_display + i_display + '" class="' + day_en['d'+d] + day_count + ' date' + i + '">' + i + '</td>';
             d++;
           }
+          
           for(var j=0;j<(6-last_day);j++){
             txt += '<td>&nbsp;</td>\n';
           }
