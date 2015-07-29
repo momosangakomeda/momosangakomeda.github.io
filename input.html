@@ -16,16 +16,65 @@
         var day   = $("#day").val();
         var event = $("#event").val();
         
+        alert("日本or中国？"+lang+" 日付"+day+" イベント"+event);
+        
+        for(i=0;i<2;i++){
+          // 日付の/マークを取る
+          day = day.replace("/","");
+        }
+        // 実は配列でやってみたい
+        
+        // とりあえず
+        day1 = day + "1";
+        day2 = day + "2";
+        day3 = day + "3";
+        day4 = day + "4";
+        day5 = day + "5";
+        
+        // localstrage取り出し
+        var strageDay1 = localStorage.getItem(day1);
+        var strageDay2 = localStorage.getItem(day2);
+        var strageDay3 = localStorage.getItem(day3);
+        var strageDay4 = localStorage.getItem(day4);
+        var strageDay5 = localStorage.getItem(day5);
+
+        if(strageDay1==null){
+          // localstrage保存
+          localStorage.setItem(day1,event);
+        }
+        else if(strageDay2==null){
+          localStorage.setItem(day2,event);
+        }
+        else if(strageDay3==null){
+          localStorage.setItem(day3,event);
+        }
+        else if(strageDay4==null){
+          localStorage.setItem(day4,event);
+        }
+        else if(strageDay5==null){
+          localStorage.setItem(day5,event);
+        }
+        else{
+          alert("登録できません");
+        }
+        
         // ＵＲＬ組立
-        var url = "calendar.html?";
+        var url = "calendar2.html?";
         url = url + "lang=" + encodeURIComponent(lang) + "&";
         url = url + "day=" + encodeURIComponent(day) + "&";
         url = url + "event="+ encodeURIComponent(event);
         
-        // カレンダーに登録する
-        alert(url);
         window.location.href = url;
+        return false;
       });
+      
+      
+      $("#research2").click(function(){
+        var a = localStorage.getItem("year");
+        alert(a);
+      });
+      
+      
       $('#day').datepicker({
         format: 'yyyy/mm/dd',
         language: 'ja',
@@ -90,6 +139,7 @@
                 <div class="row">
                     <div class="col-md-12">
                          <button id = "research" class="btn btn-primary">とうろく</button>
+                         <button id = "research2" class="btn btn-primary">とうろく</button>
                     </div>
                 </div>
             </div>
