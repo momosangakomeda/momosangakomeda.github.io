@@ -37,6 +37,8 @@
       startDay=date.getDay();
       html1 = "";
       html1 = html1 + '<div class="container">'
+      html1 = html1 +'<input type="hidden" id="year" name="year" value='+year+'>'
+      html1 = html1 +'<input type="hidden" id ="month" name="month" value='+month+'>'
       html1 = html1 + '<p>' + year + '年' + month + '月</p>';
       html1 = html1 + "<table class='table table-bordered calendar month" + month + "'>";
       html1 = html1 + "<tr><th>" + days[0] + "</th>";
@@ -114,12 +116,27 @@
       $('.ositatoki').on('click' , function(){
         
         $(this).each(function(){
-          var year;
-          var mon;
+          var year = $("#year").val();
+          var month  = $("#month").val();
           var day = $(this).attr('id');
+          var detailday = "";
           var txt = "";
           
+          day = split(day,3);
           alert(day);
+          return;
+          alert("年"+year+"月"+month+"日"+day);
+          
+          if(month<10){
+            detailday = year+'0'+month+day;
+          }
+          else{
+          }
+          
+          localStorage.foo           // #=> "bar"
+          localStorage["foo"]        // #>= "bar"
+          localStorage.getItem("foo")// #=> "bar"
+         
 
           txt = txt + "<div class='container'>";
           txt = txt + "<table class='table table-striped table-bordered table-hover table-condensed'>";
