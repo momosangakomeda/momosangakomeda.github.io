@@ -16,8 +16,6 @@
         var day   = $("#day").val();
         var event = $("#event").val();
         
-        alert("日本or中国？"+lang+" 日付"+day+" イベント"+event);
-        
         for(i=0;i<2;i++){
           // 日付の/マークを取る
           day = day.replace("/","");
@@ -56,6 +54,7 @@
         }
         else{
           alert("登録できません");
+          return;
         }
         
         // ＵＲＬ組立
