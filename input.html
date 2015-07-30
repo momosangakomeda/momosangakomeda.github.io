@@ -15,14 +15,17 @@
         var lang  = $('input[name="day"]:checked').val(); 
         var day   = $("#day").val();
         var event = $("#event").val();
-        
+        // 引数用
+        var py="";
+        var pm="";
         for(i=0;i<2;i++){
           // 日付の/マークを取る
           day = day.replace("/","");
         }
+        
         // 実は配列でやってみたい
         
-        // とりあえず
+        // とりあえず 
         day1 = day + "1";
         day2 = day + "2";
         day3 = day + "3";
@@ -31,58 +34,58 @@
         
         // localstorage取り出し
         var strageDay1 = localStorage.getItem(day1);
-     //   var strageDay2 = localStorage.getItem(day2);
-     //   var strageDay3 = localStorage.getItem(day3);
-     //   var strageDay4 = localStorage.getItem(day4);
-     //   var strageDay5 = localStorage.getItem(day5);
+        var strageDay2 = localStorage.getItem(day2);
+        var strageDay3 = localStorage.getItem(day3);
+        var strageDay4 = localStorage.getItem(day4);
+        var strageDay5 = localStorage.getItem(day5);
         
         
         try {
+          if(strageDay1==null){
+            // localstrage保存
             window.localStorage.setItem(day1,event);
+          }
+          else if(strageDay2==null){
+            window.localStorage.setItem(day2,event);
+          }
+          else if(strageDay3==null){
+            window.localStorage.setItem(day3,event);
+          }
+          else if(strageDay4==null){
+            window.localStorage.setItem(day4,event);
+          }
+          else if(strageDay5==null){
+            window.localStorage.setItem(day5,event);
+          }
+          else{
+            alert("登録できません");
+            return;
+          }
         } catch (e) {
             // do nothing
         }
-
-    //    if(strageDay1==null){
-          // localstrage保存
-     //     localStorage.setItem(day1,event);
-     //   }
-       // else if(strageDay2==null){
-       //   localStorage.setItem(day2,event);
-       // }
-       // else if(strageDay3==null){
-      //    localStorage.setItem(day3,event);
-      //  }
-      //  else if(strageDay4==null){
-      //    localStorage.setItem(day4,event);
-      //  }
-      //  else if(strageDay5==null){
-      //    localStorage.setItem(day5,event);
-      //  }
-      //  else{
-      //    alert("登録できません");
-      //    return;
-      //  }
-      return;
         
+        
+        py = day.substring(0,4);
+        pm = day.substring(4,6);
+        
+        alert(py+" "+pm);
+        
+        // 無効の画面に遷移する際の引数をlocalstorageに保存
+        try {
+            // localstrageに引数を保存
+            window.localStorage.setItem("py",py);
+            window.localStorage.setItem("pm",pm);
+        } catch (e) {
+            // do nothing
+        }
         // ＵＲＬ組立
         var url = "calendar2.html?";
-        url = url + "lang=" + encodeURIComponent(lang) + "&";
-        url = url + "day=" + encodeURIComponent(day) + "&";
-        url = url + "event="+ encodeURIComponent(event);
-        
+
         window.location.href = url;
         return false;
       });
-      
-      
-      $("#research2").click(function(){
-        var strageDay1 = localStorage.getItem(day1);
-        var a = localStorage.getItem(day1);
-        alert(a);
-      });
-      
-      
+            
       $('#day').datepicker({
         format: 'yyyy/mm/dd',
         language: 'ja',
@@ -147,7 +150,6 @@
                 <div class="row">
                     <div class="col-md-12">
                          <button id = "research" class="btn btn-primary">とうろく</button>
-                         <button id = "research2" class="btn btn-primary">とうろく</button>
                     </div>
                 </div>
             </div>

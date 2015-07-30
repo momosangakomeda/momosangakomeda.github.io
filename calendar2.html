@@ -55,7 +55,7 @@
       for(day = 1; day <= thisMonthdays; day++) {
         eto = eto_day( year,month,day);
         if(col == 0){
-          html1 = html1 + "<td class='ositatoki' id=day"+day+" style='background-color:blue;' ><div align='center'><font size='4' color='#FF0000'>" + day + "</font><br>";
+          html1 = html1 + "<td class='ositatoki' id=day"+day+"><div align='center'><font size='4' color='#FF0000'>" + day + "</font><br>";
         } else {
           html1 = html1 + "<td class='ositatoki'  id=day"+day+"><div align='center'><font size='4' color='#666666'>" + day + "</font><br>";
         }
@@ -83,9 +83,18 @@
 
     $(function(){
       var date=new Date();
-      var y = date.getFullYear();
-      var m = date.getMonth() + 1;
       var mp,yp,mn,yn;
+      
+      // localstorage取り出し
+      var y = localStorage.getItem("py");
+      var m = localStorage.getItem("pm");
+      
+    //  if(y==null || m==null){
+    //    y = date.getFullYear();
+    //    m = date.getMonth() + 1;
+    //   }
+    //alert(y+"  "+m);
+      
       if(m==1) {
         mp=12;
         yp=y-1;
