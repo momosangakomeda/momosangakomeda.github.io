@@ -29,33 +29,41 @@
         day4 = day + "4";
         day5 = day + "5";
         
-        // localstrage取り出し
+        // localstorage取り出し
         var strageDay1 = localStorage.getItem(day1);
-        var strageDay2 = localStorage.getItem(day2);
-        var strageDay3 = localStorage.getItem(day3);
-        var strageDay4 = localStorage.getItem(day4);
-        var strageDay5 = localStorage.getItem(day5);
+     //   var strageDay2 = localStorage.getItem(day2);
+     //   var strageDay3 = localStorage.getItem(day3);
+     //   var strageDay4 = localStorage.getItem(day4);
+     //   var strageDay5 = localStorage.getItem(day5);
+        
+        
+        try {
+            window.localStorage.setItem(day1,event);
+        } catch (e) {
+            // do nothing
+        }
 
-        if(strageDay1==null){
+    //    if(strageDay1==null){
           // localstrage保存
-          localStorage.setItem(day1,event);
-        }
-        else if(strageDay2==null){
-          localStorage.setItem(day2,event);
-        }
-        else if(strageDay3==null){
-          localStorage.setItem(day3,event);
-        }
-        else if(strageDay4==null){
-          localStorage.setItem(day4,event);
-        }
-        else if(strageDay5==null){
-          localStorage.setItem(day5,event);
-        }
-        else{
-          alert("登録できません");
-          return;
-        }
+     //     localStorage.setItem(day1,event);
+     //   }
+       // else if(strageDay2==null){
+       //   localStorage.setItem(day2,event);
+       // }
+       // else if(strageDay3==null){
+      //    localStorage.setItem(day3,event);
+      //  }
+      //  else if(strageDay4==null){
+      //    localStorage.setItem(day4,event);
+      //  }
+      //  else if(strageDay5==null){
+      //    localStorage.setItem(day5,event);
+      //  }
+      //  else{
+      //    alert("登録できません");
+      //    return;
+      //  }
+      return;
         
         // ＵＲＬ組立
         var url = "calendar2.html?";
@@ -69,7 +77,8 @@
       
       
       $("#research2").click(function(){
-        var a = localStorage.getItem("year");
+        var strageDay1 = localStorage.getItem(day1);
+        var a = localStorage.getItem(day1);
         alert(a);
       });
       
