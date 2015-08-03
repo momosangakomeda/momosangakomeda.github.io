@@ -19,6 +19,7 @@
       var q; //旧暦オブジェクト
       var etoy,eto; //年の干支、日の干支
       var d;
+      var markday;
       if(((year%4==0)&&(year%100!=0))||(year%400==0)) monthdays[1]=29;
       var thisMonthdays=monthdays[month-1];
       var qArray = new Array(thisMonthdays);
@@ -54,11 +55,29 @@
       }
       for(day = 1; day <= thisMonthdays; day++) {
         eto = eto_day( year,month,day);
+        // ストレージからとってくる 2015 07 01 1を作る
+        if(month<10){
+          month = "" + 0 + month;
+        }
+        
+        if(day<10){
+          day = "" + 0 + day;
+        }
+        
+        // キーをつくってます
+        markday = "" + year + month + day +1;
+        
+        // ローカルストレージから値をとってくる
+        var markddd = localStorage.getItem(markday);
+        // nullかそうでないかで判定
+        // nullでないときは色つける
+
         if(col == 0){
           html1 = html1 + "<td class='ositatoki' id=day"+day+"><div align='center'><font size='4' color='#FF0000'>" + day + "</font><br>";
         } else {
           html1 = html1 + "<td class='ositatoki'  id=day"+day+"><div align='center'><font size='4' color='#666666'>" + day + "</font><br>";
         }
+
         if(qArray[day-1].uruu) {
           html1 = html1 + "閏 "+qArray[day-1].month+"."+qArray[day-1].day;
         } else {
@@ -134,10 +153,7 @@
           
           // idから日付を取得
           day = day.substring(3);
-          
-          if(day<10){
-            day = '0'+ day ;
-          }
+
           if(month<10){
             detailday = year+'0'+month+day;
           }
