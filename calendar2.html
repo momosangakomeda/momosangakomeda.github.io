@@ -117,7 +117,12 @@
     //    y = date.getFullYear();
     //    m = date.getMonth() + 1;
     //   }
-    alert(y+"  "+m);
+  //  alert(y+"  "+m);
+
+      parseInt(m, 10);
+      
+    //  alert("ナンバーにしたよ " +m);
+      return;
       
       if(m==1) {
         mp=12;
@@ -137,6 +142,12 @@
       }
 
       $("#pre").click(function(){
+        try {
+          window.localStorage.setItem(pm,yp);
+          window.localStorage.setItem(py,mp);
+        } catch (e) {
+            // do nothing
+        }
         $("#tag").html(htmlCalendar(yp, mp));
       });
 
@@ -252,7 +263,7 @@
                 <li>
                   <a href="https://momosangakomeda.github.io/login.html">ログイン画面</a>
                   <a href="https://momosangakomeda.github.io/input.html">入力画面</a>
-                  <a href="https://momosangakomeda.github.io/calendar.html">カレンダー</a>
+                  <a href="https://momosangakomeda.github.io/calendar2.html">カレンダー</a>
                 </li>
               </ul>
             </div>
@@ -262,7 +273,7 @@
               <span id = "tag"></span>
               <span id = "detail"></span>
               <div class="container">
-                <button id="pre"  class="btn  btn-primary">前月</button>
+                <button id="pre"  class="btn btn-primary">前月</button>
                 <button id="curr" class="btn btn-primary">当月</button>
                 <button id="next" class="btn btn-primary">翌月</button>
                 <select name="example">
