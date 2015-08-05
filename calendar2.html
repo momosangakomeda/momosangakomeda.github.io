@@ -68,21 +68,11 @@
         var markddd = localStorage.getItem(markday);
         //nullかそうでないかで判定
         //nullでないときは色つける
-        if(markddd != null){
-          if(col == 0){
-            html1 = html1 + "<td class='ositatoki' id=day"+day+" stule='background-color:red;'><div align='center'><font size='4' color='#FF0000'>" + day + "</font><br>";
-          } else {
-            html1 = html1 + "<td class='ositatoki'  id=day"+day+"><div align='center'><font size='4' color='#666666'>" + day + "</font><br>";
-          }
+        if(col == 0){
+          html1 = html1 + "<td class='ositatoki' id=day"+day+" stule='background-color:red;'><div align='center'><font size='4' color='#FF0000'>" + day + "</font><br>";
+        } else {
+          html1 = html1 + "<td class='ositatoki'  id=day"+day+"><div align='center'><font size='4' color='#666666'>" + day + "</font><br>";
         }
-        else{
-         if(col == 0){
-           html1 = html1 + "<td class='ositatoki' id=day"+day+"><div align='center'><font size='4' color='#FF0000'>" + day + "</font><br>";
-         } else {
-           html1 = html1 + "<td class='ositatoki'  id=day"+day+"><div align='center'><font size='4' color='#666666'>" + day + "</font><br>";
-         }
-        }
-
         if(qArray[day-1].uruu) {
           html1 = html1 + "閏 "+qArray[day-1].month+"."+qArray[day-1].day;
         } else {
@@ -110,20 +100,16 @@
       var mp,yp,mn,yn;
       
       // localstorage取り出し
-      var y = localStorage.getItem("py");
-      var m = localStorage.getItem("pm");
+      var piy = localStorage.getItem("piy");
+      var pim = localStorage.getItem("pim");
       
+      var y = parseInt(piy, 10);
+      var m = parseInt(pim, 10);
     //  if(y==null || m==null){
     //    y = date.getFullYear();
     //    m = date.getMonth() + 1;
     //   }
-  //  alert(y+"  "+m);
-
-      parseInt(m, 10);
-      
-    //  alert("ナンバーにしたよ " +m);
-      return;
-      
+          
       if(m==1) {
         mp=12;
         yp=y-1;
@@ -152,6 +138,12 @@
       });
 
       $("#next").click(function(){
+        try {
+          window.localStorage.setItem(pm,yp);
+          window.localStorage.setItem(py,mp);
+        } catch (e) {
+            // do nothing
+        }
         $("#tag").html(htmlCalendar(yn, mn));
       });
       
@@ -159,11 +151,13 @@
 
       $('.ositatoki').on('click' , function(){
         $(this).each(function(){
-          var year = $("#year").val();
-          var month  = $("#month").val();
+          var year = "";
+          var month  = "";
           var day = $(this).attr('id');
           var detailday = "";
           var txt = "";
+          year = localStorage.getItem("py");
+          month = localStorage.getItem("pm");
           
           $("#detail").html("");
           
