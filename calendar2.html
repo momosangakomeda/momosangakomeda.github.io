@@ -9,6 +9,41 @@
     <link href="font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="bootstrap.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
+    
+    function updatePagingData() {   
+      var date = new Date();
+
+      // localstorage取り出し
+      var piy = localStorage.getItem("piy");
+      var pim = localStorage.getItem("pim");
+      
+      var y = date.getFullYear();
+      var m = date.getMonth() + 1;
+      
+      if(piy && pim){
+        y = parseInt(piy, 10);
+        m = parseInt(pim, 10);
+      }
+          
+      if(m==1) {
+        mp=12;
+        yp=y-1;
+        mn=2
+        yn=y;
+      } else if(m==12) {
+        mp=m-1;
+        yp=y;
+        mn=1;
+        yn=y+1;
+      } else {
+        mp=m-1;
+        yp=y;
+        mn=m+1
+        yn=y;
+      }
+    }
+
+
     function htmlCalendar(year, month) {
       var html1;
       var startDay;
@@ -128,9 +163,10 @@
       }
 
       $("#pre").click(function(){
+        updatePagingData();
         try {
-          window.localStorage.setItem(pm,yp);
-          window.localStorage.setItem(py,mp);
+          window.localStorage.setItem("pim", mp);
+          window.localStorage.setItem("piy", yp);
         } catch (e) {
             // do nothing
         }
@@ -138,9 +174,10 @@
       });
 
       $("#next").click(function(){
+        updatePagingData();
         try {
-          window.localStorage.setItem(pm,yp);
-          window.localStorage.setItem(py,mp);
+          window.localStorage.setItem("pim" ,mn);
+          window.localStorage.setItem("piy" ,yn);
         } catch (e) {
             // do nothing
         }
