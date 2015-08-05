@@ -19,6 +19,9 @@
         // 引数用
         var py="";
         var pm="";
+        var piy="";
+        var pim="";
+        
         for(i=0;i<2;i++){
           // 日付の/マークを取る
           day = day.replace("/","");
@@ -69,14 +72,20 @@
         
         py = day.substring(0,4);
         pm = day.substring(4,6);
+
+
+        piy = parseInt(py, 10);
+        pim = parseInt(pm, 10);
         
-        alert(py+" "+pm);
         
         // 無効の画面に遷移する際の引数をlocalstorageに保存
         try {
             // localstrageに引数を保存
             window.localStorage.setItem("py",py);
             window.localStorage.setItem("pm",pm);
+            window.localStorage.setItem("piy",piy);
+            window.localStorage.setItem("pim",pim);
+            
         } catch (e) {
             // do nothing
         }
