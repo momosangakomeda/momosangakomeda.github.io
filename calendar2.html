@@ -17,14 +17,14 @@
       var piy = localStorage.getItem("piy");
       var pim = localStorage.getItem("pim");
       
-      var y = date.getFullYear();
-      var m = date.getMonth() + 1;
-      
-      if(piy && pim){
-        y = parseInt(piy, 10);
-        m = parseInt(pim, 10);
+      y = parseInt(piy, 10);
+      m = parseInt(pim, 10);
+
+      if (isNaN(y)||isNaN(m)){
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
       }
-          
+
       if(m==1) {
         mp=12;
         yp=y-1;
@@ -140,10 +140,18 @@
       
       var y = parseInt(piy, 10);
       var m = parseInt(pim, 10);
-    //  if(y==null || m==null){
-    //    y = date.getFullYear();
-    //    m = date.getMonth() + 1;
-    //   }
+
+      if (isNaN(y)||isNaN(m)){
+        // NaN
+        y = date.getFullYear();
+        m = date.getMonth() + 1;
+        try {
+          window.localStorage.setItem("pim", y);
+          window.localStorage.setItem("piy", m);
+        } catch (e) {
+            // do nothing
+        }
+      }
           
       if(m==1) {
         mp=12;
@@ -175,6 +183,7 @@
 
       $("#next").click(function(){
         updatePagingData();
+        alert(mn+" "+yn);
         try {
           window.localStorage.setItem("pim" ,mn);
           window.localStorage.setItem("piy" ,yn);
@@ -193,9 +202,13 @@
           var day = $(this).attr('id');
           var detailday = "";
           var txt = "";
-          year = localStorage.getItem("py");
-          month = localStorage.getItem("pm");
+          year = localStorage.getItem("piy");
+          month = localStorage.getItem("pim");
           
+          // year manthが1桁のときは頭に０をつける
+          if(month.length=1){
+            month = 0 + month;
+          }
           $("#detail").html("");
           
           // idから日付を取得
