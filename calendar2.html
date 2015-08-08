@@ -134,8 +134,14 @@
         markday = "" + year + month + day +1;
         //alert(markday);
         // ローカルストレージから値をとってくる
-        var markddd = localStorage.getItem(markday);
+        var event_flg = localStorage.getItem(markday);
         //nullかそうでないかで判定
+        if(event_flg){
+          alert(event_flg);
+        }else{
+          alert(markday+":null1でしょ");
+        }
+        return;
         //nullでないときは色つける
         if(col == 0){
           html1 = html1 + "<td class='ositatoki' id=day"+day+" stule='background-color:red;' onclick='onOsitatoki(this)'><div align='center'><font size='4' color='#FF0000'>" + day + "</font><br>";
@@ -247,7 +253,6 @@
           // idから日付を取得
           day = day.substring(3);
 
-          
           detailday = "" +year+month+day;
 
           // keyつくってる
@@ -297,9 +302,6 @@
         });
       });
 
-
-	
-
     function updatePagingData() {   
       var date = new Date();
 
@@ -332,10 +334,6 @@
         yn=y;
       }
     }
-
-
-
-
     });
     </script>
     <style type="text/css">
