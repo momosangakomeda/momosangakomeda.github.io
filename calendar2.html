@@ -137,17 +137,24 @@
         var event_flg = localStorage.getItem(markday);
         //nullかそうでないかで判定
         if(event_flg){
-          alert(event_flg);
+          if(col == 0){
+            html1 = html1 + "<td class='ositatoki' id=day"+day+" onclick='onOsitatoki(this)'><div align='center'><font size='4' color='#FF0000'>○"+ day + "</font><br>";
+          } else {
+            html1 = html1 + "<td class='ositatoki'  id=day"+day+" onclick='onOsitatoki(this)'><div align='center'><font size='4' color='#666666'>○" + day + "</font><br>";
+          }
         }else{
-          alert(markday+":null1でしょ");
+          if(col == 0){
+            html1 = html1 + "<td class='ositatoki' id=day"+day+" onclick='onOsitatoki(this)'><div align='center'><font size='4' color='#FF0000'>" + day + "</font><br>";
+          } else {
+            html1 = html1 + "<td class='ositatoki'  id=day"+day+" onclick='onOsitatoki(this)'><div align='center'><font size='4' color='#666666'>" + day + "</font><br>";
+          }
         }
-        return;
         //nullでないときは色つける
-        if(col == 0){
-          html1 = html1 + "<td class='ositatoki' id=day"+day+" stule='background-color:red;' onclick='onOsitatoki(this)'><div align='center'><font size='4' color='#FF0000'>" + day + "</font><br>";
-        } else {
-          html1 = html1 + "<td class='ositatoki'  id=day"+day+" onclick='onOsitatoki(this)'><div align='center'><font size='4' color='#666666'>" + day + "</font><br>";
-        }
+        //if(col == 0){
+        //  html1 = html1 + "<td class='ositatoki' id=day"+day+" style='background-color:red;' onclick='onOsitatoki(this)'><div align='center'><font size='4' color='#FF0000'>" + day + "</font><br>";
+        //} else {
+        //  html1 = html1 + "<td class='ositatoki'  id=day"+day+" onclick='onOsitatoki(this)'><div align='center'><font size='4' color='#666666'>" + day + "</font><br>";
+        //}
         if(qArray[day-1].uruu) {
           html1 = html1 + "閏 "+qArray[day-1].month+"."+qArray[day-1].day;
         } else {
@@ -209,6 +216,16 @@
         mn=m+1
         yn=y;
       }
+      
+      $("#curr").click(function(){
+        //piy,pimキーの値を削除する
+        window.localStorage.removeItem('piy');
+        window.localStorage.removeItem('pim');
+        // パラメーター設定
+        updatePagingData();
+        // 当月カレンダー表示
+        $("#tag").html(htmlCalendar(y, m));
+      });
 
       $("#pre").click(function(){
         updatePagingData();
@@ -245,7 +262,7 @@
           month = localStorage.getItem("pim");
           
           // year manthが1桁のときは頭に０をつける
-          if(month.length=1){
+          if(month.length==1){
             month = 0 + month;
           }
           $("#detail").html("");
