@@ -7,13 +7,12 @@
 <script>
   ons.bootstrap();
   ons.ready(function() {
-    // Add another Onsen UI element
-   // var content = document.getElementById("my-content");
-   // content.innerHTML="<ons-button>Another Button</ons-button>";
-   // ons.compile(content);
+   //  Add another Onsen UI element;
+    // var content = document.getElementById("my-content");
+    // content.innerHTML="<ons-button>Another Button</ons-button>";
+    // ons.compile(content);
     
     // アラート
-    //ons.notification.alert()
     
     
     
@@ -48,10 +47,43 @@
        </ons-toolbar>
        
        <div style="text-align:center">
-         <h1>page2</h1>
-         <ons-button onclick="myNavigator.popPage()">aaa
-         </ons-button>
+         <p><ons-icon icon="ion-ios-paw-outline"></ons-icon>イベント登録</p>
+         <ons-row>
+           <ons-col>
+             <label class="checkbox">
+               <input type="checkbox">
+               <div class="checkbox__checkmark"></div>
+               <span class="ons-checkbox-inner">じゃぱんday</span>
+             </label>
+           </ons-col>
+           <ons-col>
+             <label class="checkbox">
+             <input type="checkbox">
+               <div class="checkbox__checkmark"></div>
+               <span class="ons-checkbox-inner">ちゅーごくday</span>
+             </label>
+           </ons-col>
+         </ons-row>
+         <ons-row>
+        <ons-col><input class="text-input" id="my-input"></ons-col>
+      </ons-row>
+      <br>
+      <ons-row>
+        <ons-col><input class="text-input" id="my-input2"></ons-col>
+      </ons-row>
+      <br>
+      <ons-row>
+        <ons-col><ons-button onclick="myNavigator.popPage()"><ons-icon icon="ion-social-reddit-outline"></ons-icon>登録<ons-icon icon="ion-social-reddit-outline"></ons-icon></ons-button></ons-col>
+      </ons-row>
+     
+      
+
+
+
+
        </div>
+       
+       
          
     </ons-page>
   </ons-navigator>
