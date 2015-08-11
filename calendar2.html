@@ -125,14 +125,15 @@
       for(day = 1; day <= thisMonthdays; day++) {
         eto = eto_day( year,month,day);
         // ストレージからとってくる 2015 07 01 1を作る
-        
+        if(month<10){
+          month = "" + 0 + month;
+        }        
         if(day<10){
           day = "" + 0 + day;
         }
         
         // キーをつくってます
         markday = "" + year + month + day +1;
-        //alert(markday);
         // ローカルストレージから値をとってくる
         var event_flg = localStorage.getItem(markday);
         //nullかそうでないかで判定
