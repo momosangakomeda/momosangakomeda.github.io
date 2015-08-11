@@ -4,31 +4,68 @@
 <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
 <script src="lib/onsen/js/angular/angular.js"></script>
 <script src="lib/onsen/js/onsenui.js"></script>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+
 <script>
+  // Onsen UIのコンパイル
   ons.bootstrap();
+  
   ons.ready(function() {
-   //  Add another Onsen UI element;
-    // var content = document.getElementById("my-content");
-    // content.innerHTML="<ons-button>Another Button</ons-button>";
-    // ons.compile(content);
-    
-    // アラート
-    
-    
-    
-    
-    ons.notification.alert({
-      message: 'メッセージ',
+    //ons.notification.alert({
+      //message: 'メッセージ',
       // もしくはmessageHTML: '<div>HTML形式のメッセージ</div>',
-      title: 'ダイアログのタイトル',
-      buttonLabel: 'OK',
-      animation: 'default', // もしくは'none'
+     // title: 'ダイアログのタイトル',
+     // buttonLabel: 'OK',
+     // animation: 'default', // もしくは'none'
       // modifier: 'optional-modifier'
-      callback: function() {
+     // callback: function() {
         // ボタンがタップされた
+    //  }
+  //  });
+    
+    $("ons-button#research").on('click', function(e) {
+      // ここに処理を書きます
+      var day   = $("#my-input").val();
+      var event = $("#my-input2").val();
+      // 引数用
+      var py="";
+      var pm="";
+      var piy="";
+      var pim="";
+      for(i=0;i<2;i++){
+        // 日付の/マークを取る
+        day = day.replace("/","");
       }
-    });
-  });
+      
+      // 文字きりだしてまっすん
+      py = day.substring(0,4);
+      pm = day.substring(4,6);
+      piy = parseInt(py, 10);
+      pim = parseInt(pm, 10); 
+        
+      // 予定登録処理      
+      for(i=1;i<6;i++){
+        param_day = day + i;
+        var sto_day = localStorage.getItem(param_day);
+        if(sto_day==null){
+          try {
+            window.localStorage.setItem(param_day,event);
+            window.localStorage.setItem("piy",piy);
+            window.localStorage.setItem("pim",pim);
+          }catch (e) {
+          }
+          break;
+       }
+     }
+     
+     // 次の画面遷移先のURL生成
+     var url = "calendar2.html?";
+     window.location.href = url;
+     return false;
+   });
+ });
 </script>
 <body>
   <ons-navigator title="Navigator" var="myNavigator">
@@ -37,14 +74,11 @@
       <div id="my-content"></div>
       
       <input class="text-input" id="my-input"></input>-->
-       <ons-toolbar>
-         <div class = "left">
-           <ons-back-button>BACK</ons-back-button> 
-         </div>
-         <div class = "center">
-           <ons-back-button>CENTER</ons-back-button> 
-         </div>
-       </ons-toolbar>
+<ons-toolbar>
+ <div class="left"><ons-back-button>戻る</ons-back-button></div>
+ <div class="center">aaaaa</div>
+ <div class="right"><ons-search-input></ons-search-input></div>
+</ons-toolbar>
        
        <div style="text-align:center">
          <p><ons-icon icon="ion-ios-paw-outline"></ons-icon>イベント登録</p>
@@ -65,25 +99,16 @@
            </ons-col>
          </ons-row>
          <ons-row>
-        <ons-col><input class="text-input" id="my-input"></ons-col>
+        <ons-col><input class="text-input" id="my-input" placeholder="day"></ons-col>
       </ons-row>
       <br>
       <ons-row>
-        <ons-col><input class="text-input" id="my-input2"></ons-col>
+        <ons-col><input class="text-input" id="my-input2" placeholder="schedule"></ons-col>
       </ons-row>
-      <br>
-      <ons-row>
-        <ons-col><ons-button onclick="myNavigator.popPage()"><ons-icon icon="ion-social-reddit-outline"></ons-icon>登録<ons-icon icon="ion-social-reddit-outline"></ons-icon></ons-button></ons-col>
-      </ons-row>
-     
-      
+      <div style="text-align: center">
+        <p><ons-button id="research"><ons-icon icon="ion-ios-paw-outline"></ons-icon> 登録 <ons-icon icon="ion-ios-paw-outline"></ons-icon></ons-button></p>
+      </div>
 
-
-
-
-       </div>
-       
-       
          
     </ons-page>
   </ons-navigator>
