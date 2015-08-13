@@ -26,13 +26,11 @@
         // 日付の/マークを取る
         day = day.replace("/","");
       }
-      
       // 文字きりだしてまっすん
       py = day.substring(0,4);
       pm = day.substring(4,6);
       piy = parseInt(py, 10);
       pim = parseInt(pm, 10); 
-        
       // 予定登録処理      
       for(i=1;i<6;i++){
         param_day = day + i;
@@ -47,10 +45,8 @@
           break;
        }
      }
-     
-     // 次の画面遷移先のURL生成
-     var url = "calendar2.html?";
-     window.location.href = url;
+     // カレンダー画面に遷移
+     menu.setMainPage('page2.html', {closeMenu: true});
      return false;
    });
  });
