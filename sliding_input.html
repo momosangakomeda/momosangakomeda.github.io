@@ -1,0 +1,149 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+<link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
+<script src="lib/onsen/js/angular/angular.js"></script>
+<script src="lib/onsen/js/onsenui.js"></script>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+
+<script>
+  // Onsen UIのコンパイル
+  ons.bootstrap();
+  
+  ons.ready(function() {
+    $("ons-button#research").on('click', function(e) {
+      // ここに処理を書きます
+      var day   = $("#my-input").val();
+      var event = $("#my-input2").val();
+      // 引数用
+      var py="";
+      var pm="";
+      var piy="";
+      var pim="";
+      for(i=0;i<2;i++){
+        // 日付の/マークを取る
+        day = day.replace("/","");
+      }
+      // 文字きりだしてまっすん
+      py = day.substring(0,4);
+      pm = day.substring(4,6);
+      piy = parseInt(py, 10);
+      pim = parseInt(pm, 10); 
+      // 予定登録処理      
+      for(i=1;i<6;i++){
+        param_day = day + i;
+        var sto_day = localStorage.getItem(param_day);
+        if(sto_day==null){
+          try {
+            window.localStorage.setItem(param_day,event);
+            window.localStorage.setItem("piy",piy);
+            window.localStorage.setItem("pim",pim);
+          }catch (e) {
+          }
+          break;
+       }
+     }
+     // カレンダー画面に遷移
+     menu.setMainPage('page2.html', {closeMenu: true});
+     return false;
+   });
+ });
+</script>
+<body>
+  <ons-sliding-menu
+    main-page="page1.html"
+    menu-page="menu.html"
+    side="left"
+    var="menu">
+  </ons-sliding-menu>
+
+<script type="text/ons-template" id="page1.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button ng-click="menu.toggleMenu()"><ons-icon icon="fa-bars"></ons-icon></ons-toolbar-button>
+      </div>
+      <div class="center">スケジュール登録</div>
+    </ons-toolbar>
+    <div style="text-align:center">
+    <p><ons-icon icon="ion-ios-paw-outline"></ons-icon>seireki kyureki</p>
+      <ons-row>
+        <ons-col>
+          <label class="checkbox">
+            <input type="checkbox">
+            <div class="checkbox__checkmark"></div>
+            <span class="ons-checkbox-inner">じゃぱんday</span>
+          </label>
+        </ons-col>
+        <ons-col>
+          <label class="checkbox">
+            <input type="checkbox">
+            <div class="checkbox__checkmark"></div>
+            <span class="ons-checkbox-inner">ちゅーごくday</span>
+          </label>
+        </ons-col>
+      </ons-row>
+      <ons-row>
+        <ons-col><input class="text-input" id="my-input" placeholder="day"></ons-col>
+      </ons-row>
+      <br>
+      <ons-row>
+        <ons-col><input class="text-input" id="my-input2" placeholder="schedule"></ons-col>
+      </ons-row>
+      <div style="text-align: center">
+        <p><ons-button id="research"><ons-icon icon="ion-ios-paw-outline"></ons-icon> 登録 <ons-icon icon="ion-ios-paw-outline"></ons-icon></ons-button></p>
+      </div>
+  </ons-page>
+</script>
+
+<script type="text/ons-template" id="page2.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="menu.toggleMenu()"><ons-icon icon="fa-bars"></ons-icon></ons-toolbar-button>
+      </div>
+      <div class="center">カレンダー</div>
+    </ons-toolbar>
+
+    <h1 style="text-align: center">ここに登録したカレンダーを表示させたい！！</h1>
+           <div style="text-align:center">
+       <br>
+         <ons-row>
+           <ons-col>
+             <ons-button modifier="outline" class="ng-isolate-scope button effeckt-button button--outline slide-left" id="pre">前月</ons-button>
+             <ons-button modifier="outline" class="ng-isolate-scope button effeckt-button button--outline slide-left" id="curr">当月</ons-button>
+             <ons-button modifier="outline" class="ng-isolate-scope button effeckt-button button--outline slide-left" id="next">翌月</ons-button>
+           </ons-col>
+           <ons-col>
+             <p>セレクトボックスかっこ良く直したい<select>
+               <option value="2015">２０１５年</option>
+             </select></p>
+         </ons-col>
+         </ons-row>
+         <br>
+         <div class="center">
+           <p><span id = "tag">かれんだ</span></p>
+         </div>
+         <br>
+         <ons-row>
+           <ons-col>
+             <span id = "detail">しょうさい</span>
+           </ons-col>
+         </ons-row>
+       </div>
+  </ons-page>
+</script>
+
+<script type="text/ons-template" id="menu.html">
+  <ons-list>
+    <ons-list-item modifier="chevron" onclick="menu.setMainPage('page1.html', {closeMenu: true})">
+      スケジュール登録
+    </ons-list-item>
+    <ons-list-item modifier="chevron" onclick="menu.setMainPage('page2.html', {closeMenu: true})">
+      カレンダー
+    </ons-list-item>
+  </ons-list>
+</script>
+</body>

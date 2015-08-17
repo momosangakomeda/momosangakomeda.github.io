@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="jquery.min.js"></script>
-    <script type="text/javascript" src="bootstrap.min.js"></script>
-    <script type="text/javascript" src="kyureki.js"></script>
-    <link href="font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="bootstrap.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript">
-    
-    function onOsitatoki(elm){
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+<link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
+<script src="lib/onsen/js/angular/angular.js"></script>
+<script src="lib/onsen/js/onsenui.js"></script>
+<script type="text/javascript" src = "kyureki.js"></script>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+
+<script>
+  // Onsen UIのコンパイル
+  ons.bootstrap();
+     function onOsitatoki(elm){
           var year = "";
           var month  = "";
           var day = $(elm).attr('id');
@@ -106,11 +107,11 @@
 
       startDay=date.getDay();
       html1 = "";
-      html1 = html1 + '<div class="container">'
       html1 = html1 +'<input type="hidden" id="year" name="year" value='+year+'>'
       html1 = html1 +'<input type="hidden" id ="month" name="month" value='+month+'>'
       html1 = html1 + '<p>' + year + '年' + month + '月</p>';
-      html1 = html1 + "<table class='table table-bordered calendar month" + month + "'>";
+      html1 = html1 + "<div align='center'>"
+      html1 = html1 + "<table border='1' cellspacing='0'bordercolor='gray' class='calendar month" + month + "'>";
       html1 = html1 + "<tr><th>" + days[0] + "</th>";
       for(i=1; i < 7; i++) {
         html1 = html1 + "<th>" + days[i] + "</th>";
@@ -174,11 +175,14 @@
         }
       }
       html1 = html1 + "</table>";
-      html1= html1+"<div>";
+      html1 = html1 + "</div>"
       return html1;
     }
 
-    $(function(){
+
+  ons.ready(function() {
+ 
+
       var date=new Date();
       var mp,yp,mn,yn;
       
@@ -251,7 +255,6 @@
       });
       
       $("#tag").html(htmlCalendar(y, m));
-
       $('.ositatoki').on('click' , function(){
         $(this).each(function(){
           var year = "";
@@ -352,73 +355,52 @@
         yn=y;
       }
     }
-    });
-    </script>
-    <style type="text/css">
-      .month1 .date1,/* 元日 */
-      .month1 .mon2,/* 成人の日 */
-      .month2 .date11,/* 建国記念の日 */
-      .month4 .date4,/* iwasborn */
-      .month4 .date29,/* 昭和の日 */
-      .month5 .date3,/* 憲法記念日 */
-      .month5 .date4,/* みどりの日 */
-      .month5 .date5,/* こども日 */
-      .month7 .mon3,/* 海の日 */
-      .month9 .mon3,/* 敬老の日 */
-      .month10 .mon2,/* 体育の日 */
-      .month11 .date3,/* 文化の日 */
-      .month11 .date23,/* 勤労感謝の日 */
-      .month12 .date23,/* 天皇誕生日 */
-      #d20110321,/* 春分の日（年によって異なる 20日 - 21日） */
-      #d20110923,/* 秋分の日（年によって異なる 20日 - 24日） */
-      .sun1,
-      .sun2,
-      .sun3,
-      .sun4,
-      .sun5{background:#ccf;color:#fff;}
-    </style>
-    <link rel="apple-touch-icon" href="https://momosangakomeda.github.io/logp.JPG" />
-    </head>
-    <body>
-      <div class="cover">
-        <div class="navbar">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-              <ul class="nav navbar-nav navbar-right">
-                <li>
-                  <a href="https://momosangakomeda.github.io/login.html">ログイン画面</a>
-                  <a href="https://momosangakomeda.github.io/input.html">入力画面</a>
-                  <a href="https://momosangakomeda.github.io/calendar2.html">カレンダー</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <span id = "tag"></span>
-              <span id = "detail"></span>
-              <div class="container">
-                <button id="pre"  class="btn btn-primary">前月</button>
-                <button id="curr" class="btn btn-primary">当月</button>
-                <button id="next" class="btn btn-primary">翌月</button>
-                <select name="example">
-                  <option value="2014">2014ねん</option>
-                  <option value="2015">2015ねん</option>
-                  <option value="2016">2016ねん</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+ });
+</script>
+<body>
+
+<style type="text/css">
+
+</style>
+
+  <ons-navigator title="Navigator" var="myNavigator">
+    <ons-page>
+    <!--  <ons-button onclick="myNavigator.pushPage('page2.html')">Next Page</ons-button>
+      <div id="my-content"></div>
+      
+      <input class="text-input" id="my-input"></input>-->
+<ons-toolbar>
+ <div class="left"><ons-back-button>戻る</ons-back-button></div>
+ <div class="center">aaaaa</div>
+ <div class="right"><ons-search-input></ons-search-input></div>
+</ons-toolbar>
+       
+       <div style="text-align:center">
+       <br>
+         <ons-row>
+           <ons-col>
+             <ons-button modifier="outline" class="ng-isolate-scope button effeckt-button button--outline slide-left" id="pre">前月</ons-button>
+             <ons-button modifier="outline" class="ng-isolate-scope button effeckt-button button--outline slide-left" id="curr">当月</ons-button>
+             <ons-button modifier="outline" class="ng-isolate-scope button effeckt-button button--outline slide-left" id="next">翌月</ons-button>
+           </ons-col>
+           <ons-col>
+             <p>セレクトボックスかっこ良く直したい<select>
+               <option value="2015">２０１５年</option>
+             </select></p>
+         </ons-col>
+         </ons-row>
+         <br>
+         <div class="center">
+           <p><span id = "tag">かれんだ</span></p>
+         </div>
+         <br>
+         <ons-row>
+           <ons-col>
+             <span id = "detail">しょうさい</span>
+           </ons-col>
+         </ons-row>
+       </div>
+     </ons-page>
+   </ons-navigator>
+  
+</body>
