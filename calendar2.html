@@ -194,8 +194,8 @@
         y = date.getFullYear();
         m = date.getMonth() + 1;
         try {
-          window.localStorage.setItem("pim", y);
-          window.localStorage.setItem("piy", m);
+          window.localStorage.setItem("pim", m);
+          window.localStorage.setItem("piy", y);
         } catch (e) {
             // do nothing
         }
