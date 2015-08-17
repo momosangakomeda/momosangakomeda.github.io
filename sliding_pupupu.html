@@ -1,0 +1,78 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+<link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
+<script src="lib/onsen/js/angular/angular.js"></script>
+<script src="lib/onsen/js/onsenui.js"></script>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+
+<script>
+  // Onsen UIのコンパイル
+  ons.bootstrap();
+  ons.ready(function() {
+    menu.setMainPage('page2.html', {closeMenu: true});
+    return false;
+  });
+</script>
+<body>
+  <ons-sliding-menu
+    main-page="page1.html"
+    menu-page="menu.html"
+    side="left"
+    var="menu">
+  </ons-sliding-menu>
+
+<script type="text/ons-template" id="page1.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button ng-click="menu.toggleMenu()"><ons-icon icon="fa-bars"></ons-icon></ons-toolbar-button>
+      </div>
+      <div class="center"></div>
+    </ons-toolbar>
+    <div style="text-align:center">
+      <h1>トップ</h1>
+    </div>
+
+  </ons-page>
+</script>
+
+<script type="text/ons-template" id="page2.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="menu.toggleMenu()"><ons-icon icon="fa-bars"></ons-icon></ons-toolbar-button>
+      </div>
+      <div class="center">いちらん</div>
+    </ons-toolbar>
+    <h1 style="text-align: center">一覧</h1>
+  </ons-page>
+</script>
+<script type="text/ons-template" id="page3.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="menu.toggleMenu()"><ons-icon icon="fa-bars"></ons-icon></ons-toolbar-button>
+      </div>
+      <div class="center">かめら</div>
+    </ons-toolbar>
+    <h1 style="text-align: center">カメラでアールジービー値はかる</h1>
+  </ons-page>
+</script>
+
+<script type="text/ons-template" id="menu.html">
+  <ons-list>
+    <ons-list-item modifier="chevron" onclick="menu.setMainPage('page1.html', {closeMenu: true})">
+      <ons-icon icon="ion-home"></ons-icon>トップ
+    </ons-list-item>
+    <ons-list-item modifier="chevron" onclick="menu.setMainPage('page2.html', {closeMenu: true})">
+      <ons-icon icon="ion-ios-body"></ons-icon>一覧
+    </ons-list-item>
+    <ons-list-item modifier="chevron" onclick="menu.setMainPage('page3.html', {closeMenu: true})">
+      <ons-icon icon="ion-ios-camera-outline"></ons-icon>かめら
+    </ons-list-item>
+  </ons-list>
+</script>
+</body>
