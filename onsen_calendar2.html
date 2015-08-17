@@ -41,10 +41,10 @@
 
       startDay=date.getDay();
       html1 = "";
-      html1 = html1 + '<div class="container">'
       html1 = html1 +'<input type="hidden" id="year" name="year" value='+year+'>'
       html1 = html1 +'<input type="hidden" id ="month" name="month" value='+month+'>'
       html1 = html1 + '<p>' + year + '年' + month + '月</p>';
+      html1 = html1 + "<div align='center'>"
       html1 = html1 + "<table class='table table-bordered calendar month" + month + "'>";
       html1 = html1 + "<tr><th>" + days[0] + "</th>";
       for(i=1; i < 7; i++) {
@@ -109,7 +109,7 @@
         }
       }
       html1 = html1 + "</table>";
-      html1= html1+"<div>";
+      html1 = html1 + "</div>"
       return html1;
     }
 
@@ -193,6 +193,15 @@
  });
 </script>
 <body>
+
+<style type="text/css">
+#container{
+  width: 200px;
+  margin: 0 auto;
+}
+
+</style>
+
   <ons-navigator title="Navigator" var="myNavigator">
     <ons-page>
     <!--  <ons-button onclick="myNavigator.pushPage('page2.html')">Next Page</ons-button>
@@ -220,24 +229,15 @@
          </ons-col>
          </ons-row>
          <br>
-	 <div class="center">
-	   <span id = "tag">かれんだ</span>
-	 </div>
-	 <br>
-	 <ons-row>
-	   <ons-col>
-	     <span id = "detail">しょうさい</span>.
-	   </ons-col>
-	 </ons-row>
-	 <ons-row>
-	   <ons-col>日</ons-col>
-	   <ons-col>月</ons-col>
-	   <ons-col>火</ons-col>
-	   <ons-col>水</ons-col>
-	   <ons-col>木</ons-col>
-	   <ons-col>金</ons-col>
-	   <ons-col>土</ons-col>
-	 </ons-row>
+         <div class="center">
+           <p><span id = "tag">かれんだ</span></p>
+         </div>
+         <br>
+         <ons-row>
+           <ons-col>
+             <span id = "detail">しょうさい</span>
+           </ons-col>
+         </ons-row>
        </div>
      </ons-page>
    </ons-navigator>
