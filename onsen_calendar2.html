@@ -111,7 +111,7 @@
       html1 = html1 +'<input type="hidden" id ="month" name="month" value='+month+'>'
       html1 = html1 + '<p>' + year + '年' + month + '月</p>';
       html1 = html1 + "<div align='center'>"
-      html1 = html1 + "<table border='1' cellspacing='0'bordercolor='gray' class='calendar month" + month + "'>";
+      html1 = html1 + "<table id='calendar' border='1' cellspacing='0'bordercolor='gray' class='calendar month" + month + "'>";
       html1 = html1 + "<tr><th>" + days[0] + "</th>";
       for(i=1; i < 7; i++) {
         html1 = html1 + "<th>" + days[i] + "</th>";
@@ -275,50 +275,16 @@
           day = day.substring(3);
 
           detailday = "" +year+month+day;
-
-          // keyつくってる
-          var detailday1 = detailday + '1';
-          var detailday2 = detailday + '2';
-          var detailday3 = detailday + '3';
-          var detailday4 = detailday + '4';
-          var detailday5 = detailday + '5';
           
-          // localstorageから値取得
-          detailday1 = localStorage.getItem(detailday1);
-          detailday2 = localStorage.getItem(detailday2);
-          detailday3 = localStorage.getItem(detailday3);
-          detailday4 = localStorage.getItem(detailday4);
-          detailday5 = localStorage.getItem(detailday5);
-
-          txt = txt + "<div class='container'>";
-          txt = txt + "<table class='table table-striped table-bordered table-hover table-condensed'>";
-          if(detailday1 != null){
-            txt = txt + "<tr>";
-            txt = txt + "<td style='text-align:center;'>"+detailday1+"</td>";
-            txt = txt + "</tr>";
+          for(i=1;i<6;i++){
+            var detailday_key = detailday + i;
+            var detailday_content = "";
+            // ローカルから値を取得
+            detailday_content = localStorage.getItem(detailday_key);
+            if(detailday_content != null){
+              txt = txt + "<div align='center'>"+detailday_content+"</div>";
+            }
           }
-          if(detailday2 != null){
-            txt = txt + "<tr>";
-            txt = txt + "<td style='text-align:center;'>"+detailday2+"</td>";
-            txt = txt + "</tr>";
-          }
-          if(detailday3 != null){
-            txt = txt + "<tr>";
-            txt = txt + "<td style='text-align:center;'>"+detailday3+"</td>";
-            txt = txt + "</tr>";
-          }
-          if(detailday4 != null){
-            txt = txt + "<tr>";
-            txt = txt + "<td style='text-align:center;'>"+detailday4+"</td>";
-            txt = txt + "</tr>";
-          }
-          if(detailday5 != null){
-            txt = txt + "<tr>";
-            txt = txt + "<td style='text-align:center;'>"+detailday5+"</td>";
-            txt = txt + "</tr>";
-          }
-          txt = txt + "</table></div>";
-          
           $("#detail").html(txt);
         });
       });
@@ -360,7 +326,9 @@
 <body>
 
 <style type="text/css">
-
+table#calendar td{
+  padding:10px;
+}
 </style>
 
   <ons-navigator title="Navigator" var="myNavigator">
@@ -383,11 +351,6 @@
              <ons-button modifier="outline" class="ng-isolate-scope button effeckt-button button--outline slide-left" id="curr">当月</ons-button>
              <ons-button modifier="outline" class="ng-isolate-scope button effeckt-button button--outline slide-left" id="next">翌月</ons-button>
            </ons-col>
-           <ons-col>
-             <p>セレクトボックスかっこ良く直したい<select>
-               <option value="2015">２０１５年</option>
-             </select></p>
-         </ons-col>
          </ons-row>
          <br>
          <div class="center">
