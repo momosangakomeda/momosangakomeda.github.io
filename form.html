@@ -1,0 +1,133 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+<link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
+<script src="lib/onsen/js/angular/angular.js"></script>
+<script src="lib/onsen/js/onsenui.js"></script>
+<script type="text/javascript" src = "kyureki.js"></script>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+
+<script>
+  // Onsen UIのコンパイル
+  ons.bootstrap();
+  
+  ons.ready(function() {
+      // 検索ボタンおしたとき
+      $("ons-button#curr").on('click', function(e) {
+        //piy,pimキーの値を削除する
+        window.localStorage.removeItem('piy');
+        window.localStorage.removeItem('pim');
+        // パラメーター設定
+        updatePagingData();
+        // 当月カレンダー表示
+        $("#tag").html(htmlCalendar(y, m));
+      });
+      
+      $("ons-button#pre").on('click', function(e) {
+        updatePagingData();
+        try {
+          window.localStorage.setItem("pim", mp);
+          window.localStorage.setItem("piy", yp);
+        } catch (e) {
+            // do nothing
+        }
+        $("#tag").html(htmlCalendar(yp, mp));
+      });
+      
+      $("ons-button#next").on('click', function(e) {
+        updatePagingData();
+        try {
+          window.localStorage.setItem("pim" ,mn);
+          window.localStorage.setItem("piy" ,yn);
+        } catch (e) {
+            // do nothing
+        }
+        $("#tag").html(htmlCalendar(yn, mn));
+      });
+      
+      $("#tag").html(htmlCalendar(y, m));
+      $('.ositatoki').on('click' , function(){
+        $(this).each(function(){
+          var year = "";
+          var month  = "";
+          var day = $(this).attr('id');
+          var detailday = "";
+          var txt = "";
+          year = localStorage.getItem("piy");
+          month = localStorage.getItem("pim");
+          
+          // year manthが1桁のときは頭に０をつける
+          if(month.length==1){
+            month = 0 + month;
+          }
+          $("#detail").html("");
+          
+          // idから日付を取得
+          day = day.substring(3);
+
+          detailday = "" +year+month+day;
+          
+          for(i=1;i<6;i++){
+            var detailday_key = detailday + i;
+            var detailday_content = "";
+            // ローカルから値を取得
+            detailday_content = localStorage.getItem(detailday_key);
+            if(detailday_content != null){
+              txt = txt + "<div align='center'>"+detailday_content+"</div>";
+            }
+          }
+          $("#detail").html(txt);
+        });
+      });
+ });
+</script>
+<body>
+  <ons-navigator title="Navigator" var="myNavigator">
+    <ons-page>
+      <div id="my-content" style="text-align:center;">
+        <p style="height:10px;"></p>
+        <ons-row>
+           <ons-col>
+             <p>年
+             <select name="year">
+               <option value="2000">2000</option>
+               <option value="1999">1999</option>
+               <option value="1998">1998</option>
+               <option value="1997">1997</option>
+             </select></p>
+           </ons-col>
+           <ons-col>
+             <p>月
+             <select name="mon">
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="12">12</option>
+             </select></p>
+           </ons-col>
+           <ons-col>
+             <p>日
+             <select name="day">
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="30">30</option>
+             </select></p>
+           </ons-col>
+           <ons-col>
+            <label class="checkbox">
+            <input type="checkbox">
+            <div class="checkbox__checkmark"></div>
+            <span class="ons-checkbox-inner">閏</span>
+          </label>
+           </ons-col>
+      </div>
+      <div style="text-align:center;">
+         <ons-button modifier="outline" class="ng-isolate-scope button effeckt-button button--outline slide-left" id="search">kensaku</ons-button>
+      </div>
+    </ons-page>
+  </ons-navigator>
+</body>
