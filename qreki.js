@@ -97,7 +97,8 @@ qreki.getDateFromJulian = function(jd, timeOffset){
 		y = c - 4715;
 	}
     var datestr = qreki.getStringDateISO(y, m, d, timeOffset);
-    return new Date(datestr);
+    //return new Date(datestr);
+    return new Date(y, m - 1, d);
 };
 
 //-------------------------------------------------------------------------------------------
@@ -550,25 +551,22 @@ qreki.getQrekiToDateString = function(qy, qm, qu, qd) {
     var sunyy,sunmm,sundd;
     var jd1 = qreki.getJulianDay(qy, 1, 6, qreki.TIMEOFFSET_JP);
     var jd2 = qreki.getJulianDay(qy + 1, 4, 1, qreki.TIMEOFFSET_JP);
-  
+
     i = jd1;
-    while(1){ 
-        if(i >= jd2)
-            break;
+    for(i = jd1;i < jd2; i++) {
         date1 = qreki.getDateFromJulian(i, qreki.TIMEOFFSET_JP);
         sunyy = date1.getFullYear();
         sunmm = date1.getMonth() + 1;
         sundd = date1.getDate();
         qdate1 = qreki.getKyureki(sunyy, sunmm, sundd);
-        if(qy < qdate1.year)
-            break;
-        if(qy == qdate1.year){
+        //if(qy < qdate1.year)
+        //    break;
+        if(qy == qdate1.year) {
             if(qy == qdate1.year && qdate1.month == qm && qdate1.day == qd){
               ret = date1;
               break;
             }
         }
-        i++
     }
     var str = "";
     if(ret) {

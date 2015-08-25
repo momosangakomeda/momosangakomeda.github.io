@@ -157,7 +157,7 @@ function getStringDate(year,month,day,timeOffset) {
 	var a = (a-d)*24;	var h = Math.floor(a);
 	var a = (a-h)*60;	var m = Math.floor(a);
 	var a = (a-m)*60;	var s = Math.floor(a+0.5);
-
+    
 	dateStr += intToString(year,4);
 	dateStr += "."+intToString(month,2);
 	dateStr += "."+intToString(d,2);
@@ -594,7 +594,7 @@ function showCalender(year,month) {
 	if(((year%4==0)&&(year%100!=0))||(year%400==0)) monthdays[1]=29;
 	var thisMonthdays=monthdays[month-1];
 	var qArray = new Array(thisMonthdays);
-
+    
 	q = new getKyureki(year,month,1);
 	d = q.day;
 	for(day=1; day<=thisMonthdays; day++) {
@@ -605,7 +605,7 @@ function showCalender(year,month) {
 		qArray[day-1]= new kDate(q.uruu,q.month,d);
 		d++;
 	}
-
+    
 	startDay=date.getDay();
 	document.write("<table border='1' bordercolor='#666666' cellspacing='0' cellpadding='2'bgcolor='#ffffff' >");
 	document.write("<tr bgcolor='#000000'><th colspan='7'><div align=center><font color='#FFFFFF'>",year,'年 ',month,'月</th></tr>');
@@ -663,3 +663,4 @@ function show24Sekki(year,month,day) {
 		document.write("<br>");
 	}
 }
+

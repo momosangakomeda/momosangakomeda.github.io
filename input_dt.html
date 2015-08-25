@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+    <link href="font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="bootstrap.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="bootstrap-datepicker.ja.js"></script>
+    <script type="text/javascript">
+    $(function(){
+      $('#day').datepicker({
+        format: 'yyyy/mm/dd',
+        language: 'ja',
+        autoclose: true,
+        clearBtn: false,
+        keyboardNavigation : true
+      });
+    });
+    </script>
+    <link rel="stylesheet" type="text/css" href="datepicker.css">
+    <style type="text/css">
+    </style>
+    <link rel="apple-touch-icon" href="https://momosangakomeda.github.io/logp.JPG" />
+    </head>
+    <body>
+        <div class="cover">
+            <div class="navbar">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="https://momosangakomeda.github.io/login.html">ログイン画面</a>
+                                <a href="https://momosangakomeda.github.io/input.html">入力画面</a>
+                                <a href="https://momosangakomeda.github.io/calendar2.html">カレンダー</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="form-group">
+                    <p class="control-label"><b>イベント登録</b></p>
+                    <div class="radio-inline">
+                        <input type="radio" value="1" name="day" checked>
+                        <label for="jap">日本の日</label>
+                    </div>
+                    <div class="radio-inline">
+                        <input type="radio" value="2" name="day">
+                        <label for="china">中国の日</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="date" id="day2" maxlength="10" class="form-control" label="" placeholder="yyyyy/mm/dd">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input id="event" maxlength="10" class="form-control" label="" placeholder="イベント">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                         <button id = "research" class="btn btn-primary">とうろく</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
