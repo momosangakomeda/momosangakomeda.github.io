@@ -1,0 +1,110 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+<link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
+<script src="lib/onsen/js/angular/angular.js"></script>
+<script src="lib/onsen/js/onsenui.js"></script>
+<script type="text/javascript" src = "kyureki.js"></script>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+<script type="text/javascript" src="qreki.js"></script>
+        <script>
+        // Onsen UIのコンパイル
+        ons.bootstrap();
+        ons.ready(function() {
+        });
+        
+        function onInput(elm){
+          var qy = $("#qyear").val();
+          var qm = $("#qmonth").val();
+          var qd = $("#qday").val();
+          var qresult = qreki.getQrekiToDateString(qy, qm, 0, qd);
+          $("#kekka").html("日本の暦:" + qresult);
+        }
+        </script>
+    </head>
+
+    <body>
+    
+    <div style="text-align:center">
+      <p style="width:100px;"></p>
+      <h1>中国農暦</h1>
+         <ons-row>
+           <ons-col>
+             <label class="checkbox">
+               <input type="checkbox">
+               <div class="checkbox__checkmark"></div>
+               <span class="ons-checkbox-inner">閏</span>
+             </label>
+           </ons-col>
+         </ons-row>
+         <ons-row>
+           <ons-col>
+             <select name="year" id="qyear">
+               <option value="2010">2010</option>
+               <option value="2011">2011</option>
+               <option value="2012">2012</option>
+               <option value="2013">2013</option>
+               <option value="2014">2014</option>
+               <option value="2015">2015</option>
+               <option value="2016">2016</option>
+               <option value="2017">2017</option>
+             </select>
+           </ons-col>
+           <ons-col>
+             <select name="month" id="qmonth">
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+               <option value="7">7</option>
+               <option value="8">8</option>
+               <option value="9">9</option>
+               <option value="10">10</option>
+               <option value="11">11</option>
+               <option value="12">12</option>
+             </select>
+           </ons-col>
+           <ons-col>
+             <select name="day" id="qday">
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+               <option value="7">7</option>
+               <option value="8">8</option>
+               <option value="9">9</option>
+               <option value="10">10</option>
+               <option value="11">11</option>
+               <option value="12">12</option>
+               <option value="13">13</option>
+               <option value="14">14</option>
+               <option value="15">15</option>
+               <option value="16">16</option>
+               <option value="17">17</option>
+               <option value="18">18</option>
+               <option value="19">19</option>
+               <option value="20">20</option>
+               <option value="21">21</option>
+               <option value="22">22</option>
+               <option value="23">23</option>
+               <option value="24">24</option>
+               <option value="25">25</option>
+               <option value="26">26</option>
+               <option value="27">27</option>
+               <option value="28">28</option>
+               <option value="29">29</option>
+               <option value="30">30</option>
+             </select>
+           </ons-col>
+         </ons-row>
+         <div style="text-align: center">
+           <p><ons-button  onclick='onInput(this)'><ons-icon icon="ion-ios-paw-outline"></ons-icon> 登録 <ons-icon icon="ion-ios-paw-outline"></ons-icon></ons-button></p>
+         </div>
+         <div id="kekka"></div>
+    </body>
+</html>
