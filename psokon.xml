@@ -1,109 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
-
-<channel>
-
-<title>psokon!!!!!</title>
-
-<link>http://www.example.com/podcasts/everything/index.html</link>
-
-<language>ja-jp</language>
-
-<copyright>&#x2117; &amp; &#xA9; 2014 John Doe &amp; Family</copyright>
-
-<itunes:subtitle>＊＊＊＊＊＊ばーれすく＊＊＊＊＊＊</itunes:subtitle>
-
-<itunes:author>John Doe</itunes:author>
-
-<itunes:summary>podcastをはじめるためのTESTです</itunes:summary>
-
-<description>ニート　OR　年収０円のCEO</description>
-
-<itunes:owner>
-
-<itunes:name>John Doe</itunes:name>
-
-<itunes:email>john.doe@example.com</itunes:email>
-
-</itunes:owner>
-
-<itunes:image href="https://dl.dropboxusercontent.com/u/57646309/ayapasoyukipaso.jpg" />
-
-<itunes:category text="Technology">
-
-<itunes:category text="Gadgets"/>
-
-</itunes:category>
-
-<itunes:category text="TV &amp; Film"/>
-
-<item>
-
-<title>スパイスを思い切りシェイクしよう</title>
-
-<itunes:author>John Doe</itunes:author>
-
-<itunes:subtitle>食卓のスパイス入門編</itunes:subtitle>
-
-<itunes:summary><![CDATA[今週のテーマは、<a href="https://itunes/apple.com/us/book/antique-trader-salt-pepper/id429691295?mt=11">塩と胡椒のシェーカー</a>です。穴から出る量や、容器の素材、全体的な美的デザインを比較します。ぜひ参加してください！]]</itunes:summary>
-
-<itunes:image href="https://dl.dropboxusercontent.com/u/57646309/ayapasoyukipaso.jpg" />
-
-<enclosure url="https://dl.dropboxusercontent.com/u/57646309/podcast_test.m4a" length="8727310" type="audio/x-m4a" />
-
-<guid>http://example.com/podcasts/archive/aae20140615.m4a</guid>
-
-<pubDate>Wed, 15 Jun 2014 19:00:00 GMT</pubDate>
-
-<itunes:duration>7:04</itunes:duration>
-
-</item>
-
-<item>
-
-<title>ソケットレンチで舌戦</title>
-
-<itunes:author>Jane Doe</itunes:author>
-
-<itunes:subtitle>ソケットレンチをあれこれ比べるのは楽しいもの！</itunes:subtitle>
-
-<itunes:summary>今週はメトリックとオールドイングリッシュの違いについてお話します。どちらが優れているでし﻿ょうか？本当に両方とも必要でしょうか？すべての答えがわかります。</itunes:summary>
-
-<itunes:image href="http://example.com/podcasts/everything/AllAboutEverything/Episode2.jpg" />
-
-<enclosure url="http://example.com/podcasts/everything/AllAboutEverythingEpisode2.mp3" length="5650889" type="audio/mpeg" />
-
-<guid>http://example.com/podcasts/archive/aae20140608.mp3</guid>
-
-<pubDate>Wed, 8 Jun 2014 19:00:00 GMT<pubDate>
-
-<itunes:duration>4:34</itunes:duration>
-
-</item>
-
-<item>
-
-<title>愛国心にお悩みの方へ</title>
-
-<itunes:author>Various</itunes:author>
-
-<itunes:subtitle>赤 + 青 = パープル</itunes:subtitle>
-
-<itunes:summary>今週は、共和党支持者の多い地域で民主党支持者が生き抜く方法と、その逆についても語ります。</itunes:summary>
-
-<itunes:image href="http://example.com/podcasts/everything/AllAboutEverything/Episode3.jpg" />
-
-<enclosure url="http://example.com/podcasts/everything/AllAboutEverythingEpisode1.mp3" length="498537" type="audio/mpeg" />
-
-<guid>http://example.com/podcasts/archive/aae20140601.mp3</guid>
-
-<pubDate>Wed, 1 Jun 2014 19:00:00 GMT</pubDate>
-
-<itunes:duration>3:59</itunes:duration>
-
-</item>
-
-</channel>
-
+    <channel>
+        <title>psokon!!!!!</title>
+        <link>http://www.example.com/podcasts/everything/index.html</link>
+        <language>ja-jp</language>
+        <copyright>&#x2117; &amp; &#xA9; 2014 John Doe &amp; Family</copyright>
+        <itunes:subtitle>＊＊＊＊＊＊ばーれすく＊＊＊＊＊＊</itunes:subtitle>
+        <itunes:author>John Doe</itunes:author>
+        <itunes:summary>podcastをはじめるためのTESTです</itunes:summary>
+        <description>ニート　OR　年収０円のCEO</description>
+        <itunes:owner>
+            <itunes:name>John Doe</itunes:name>
+            <itunes:email>john.doe@example.com</itunes:email>
+        </itunes:owner>
+        <itunes:image href="https://dl.dropboxusercontent.com/u/57646309/ayapasoyukipaso.jpg" />
+        <itunes:category text="Technology">
+            <itunes:category text="Gadgets"/>
+        </itunes:category>
+        <itunes:category text="TV &amp; Film"/>
+        <item>
+            <title>スパイスを思い切りシェイクしよう</title>
+            <itunes:author>John Doe</itunes:author>
+            <itunes:subtitle>食卓のスパイス入門編</itunes:subtitle>
+            <itunes:summary>してください！</itunes:summary>
+            <itunes:image href="https://dl.dropboxusercontent.com/u/57646309/ayapasoyukipaso.jpg" />
+            <enclosure url="https://dl.dropboxusercontent.com/u/57646309/podcast_test.m4a" length="8727310" type="audio/x-m4a" />
+            <guid>http://example.com/podcasts/archive/aae20140615.m4a</guid>
+            <pubDate>Sat, 5 Sep 2015 18:00:00 GMT</pubDate>
+            <itunes:duration>7:04</itunes:duration>
+        </item>
+    </channel>
 </rss>
